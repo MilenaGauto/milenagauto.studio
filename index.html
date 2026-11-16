@@ -1,239 +1,916 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Milena Gauto Studio · Invitaciones web con muro de fotos en vivo</title>
-<meta name="description" content="Probá invitaciones web interactivas con RSVP por WhatsApp, cuenta regresiva, GPS y muro de fotos en vivo.">
+
+<title>Milena Gauto Studio · Invitaciones digitales</title>
+
+<meta name="description" content="Invitaciones web personalizadas para bautismos, 15 años y casamientos. Diseños interactivos con cuenta regresiva, mapas, confirmación por WhatsApp y muro de fotos en vivo.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-:root{color-scheme:light;--bg:#fbf6f1;--ink:#5a2a3c;--wine:#7d3a52;--gold:#c9a25a;--gold2:#b98f5e;--line:#ecdcc6;--card:#fffdfa;--muted:#8a6a5e}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Jost,system-ui,sans-serif}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;margin:0}
-h1{font-size:clamp(2.6rem,7vw,4.6rem);font-style:italic;color:var(--wine)}
-h2{font-size:clamp(2rem,4.5vw,3rem);font-style:italic;color:var(--wine);margin-bottom:.5rem}
-h2::after{content:"";display:block;width:90px;height:7px;margin:14px 0 18px;background:linear-gradient(var(--gold),var(--gold)) left center/34px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) right center/34px 1px no-repeat,radial-gradient(circle,var(--gold) 2px,transparent 2.5px) center/7px 7px no-repeat}
-p{max-width:60ch}
-.mono{position:relative;display:inline-block;font:italic 500 2.1rem/1 "Cormorant Garamond",serif;color:var(--wine);padding-right:4px}
-.mono i{color:var(--gold);margin-left:-.28em}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand small{font:400 .72rem Jost,sans-serif;letter-spacing:.22em;color:var(--gold2);text-transform:uppercase;display:block}
-.brand b{font:italic 500 1.25rem "Cormorant Garamond",serif;color:var(--wine)}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-section{padding:72px 0;border-top:1px solid var(--line)}
-header.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.logo{font:italic 600 1.5rem "Cormorant Garamond",serif;color:var(--wine);text-decoration:none}
-.btn{display:inline-block;background:var(--wine);color:#fffaf4;border:0;border-radius:999px;padding:13px 26px;font:500 1rem Jost,sans-serif;text-decoration:none;cursor:pointer}
-.btn.alt{background:transparent;color:var(--wine);border:1px solid var(--gold)}
-.btn:hover{filter:brightness(1.08)}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:36px 0 72px}
-.hero p{margin:1.2rem 0 1.8rem;color:var(--muted)}
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.phone{width:290px;height:580px;margin:0 auto;border:10px solid #5a2a3c;border-radius:42px;overflow:hidden;background:#fff;box-shadow:0 0 0 2px var(--gold);position:relative}
-.phone iframe{width:100%;height:100%;border:0;background:#fff}
-.phone .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:28px;color:#7a6670;font-size:.95rem}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
-.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 18px;font:500 .95rem Jost,sans-serif;cursor:pointer}
-.tabs button[aria-pressed=true]{background:var(--wine);border-color:var(--wine);color:#fff}
-.demo{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-.meta h3{font-size:2rem;color:var(--wine)}
-.meta ul{padding-left:1.1rem;color:var(--muted)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s;padding:0;list-style:none;margin-top:28px}
-.steps li{counter-increment:s;border-top:2px solid var(--gold);padding-top:14px}
-.steps li::before{content:counter(s);font:italic 500 2rem "Cormorant Garamond",serif;color:var(--gold)}
-.steps b{display:block;font-weight:500}
-.steps span{color:var(--muted);font-size:.95rem}
-.wall-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0}
-.wall-bar input{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:11px 18px;font:inherit;min-width:220px}
-.status{color:var(--muted);font-size:.92rem;min-height:1.4em}
-.grid{columns:4 180px;column-gap:10px}
-.grid a{display:block;margin-bottom:10px;border-radius:10px;overflow:hidden;background:var(--line)}
-.grid img{width:100%;display:block}
-.grid a.new{animation:pop .6s ease}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
-body.pantalla header.top,body.pantalla .hero,body.pantalla #demos,body.pantalla #como,body.pantalla #contacto,body.pantalla .wall-bar,body.pantalla footer{display:none}
-body.pantalla section{border:0;padding:16px 0}
-footer{padding:36px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
-@media(max-width:800px){.hero,.demo{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.phone{order:-1}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+:root {
+  color-scheme: light;
+  --bg: #fbf6f1;
+  --ink: #5a2a3c;
+  --wine: #7d3a52;
+  --gold: #c9a25a;
+  --gold2: #b98f5e;
+  --line: #ecdcc6;
+  --card: #fffdfa;
+  --muted: #8a6a5e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.6 Jost, system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-style: italic;
+  color: var(--wine);
+}
+
+h2 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-style: italic;
+  color: var(--wine);
+  margin-bottom: .5rem;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 7px;
+  margin: 14px 0 18px;
+  background:
+    linear-gradient(var(--gold),var(--gold)) left center/34px 1px no-repeat,
+    linear-gradient(var(--gold),var(--gold)) right center/34px 1px no-repeat,
+    radial-gradient(circle,var(--gold) 2px,transparent 2.5px) center/7px 7px no-repeat;
+}
+
+p {
+  max-width: 60ch;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+section {
+  padding: 72px 0;
+  border-top: 1px solid var(--line);
+}
+
+/* MARCA */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand small {
+  font: 400 .72rem Jost, sans-serif;
+  letter-spacing: .22em;
+  color: var(--gold2);
+  text-transform: uppercase;
+  display: block;
+}
+
+.brand b {
+  font: italic 500 1.25rem "Cormorant Garamond", serif;
+  color: var(--wine);
+}
+
+.mono {
+  position: relative;
+  display: inline-block;
+  font: italic 500 2.1rem/1 "Cormorant Garamond", serif;
+  color: var(--wine);
+  padding-right: 4px;
+}
+
+.mono i {
+  color: var(--gold);
+  margin-left: -.28em;
+}
+
+header.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+
+/* BOTONES */
+
+.btn {
+  display: inline-block;
+  background: var(--wine);
+  color: #fffaf4;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font: 500 1rem Jost, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .25s, background .25s;
+}
+
+.btn.alt {
+  background: transparent;
+  color: var(--wine);
+  border: 1px solid var(--gold);
+}
+
+.btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* PORTADA */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 40px;
+  align-items: center;
+  padding: 36px 0 72px;
+}
+
+.hero p {
+  margin: 1.2rem 0 1.8rem;
+  color: var(--muted);
+}
+
+/* CELULAR */
+
+.phone {
+  width: 290px;
+  height: 580px;
+  margin: 0 auto;
+  border: 10px solid #5a2a3c;
+  border-radius: 42px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--gold);
+  position: relative;
+}
+
+.phone iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.phone .empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 28px;
+  color: #7a6670;
+  font-size: .95rem;
+}
+
+/* DEMOS */
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+.tabs button {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font: 500 .95rem Jost, sans-serif;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.tabs button:hover {
+  border-color: var(--gold);
+}
+
+.tabs button[aria-pressed=true] {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: #fff;
+}
+
+.demo {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+
+.meta h3 {
+  font-size: 2rem;
+  color: var(--wine);
+}
+
+.meta ul {
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+/* MURO DE FOTOS - PRESENTACIÓN COMERCIAL */
+
+.wall-intro {
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.wall-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.wall-copy h3 {
+  font: italic 500 2rem "Cormorant Garamond", serif;
+  color: var(--wine);
+  margin-bottom: 14px;
+}
+
+.wall-copy p {
+  color: var(--muted);
+}
+
+.wall-features {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+}
+
+.wall-features li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.wall-features li::before {
+  content: "✦";
+  color: var(--gold);
+}
+
+.wall-note {
+  display: inline-block;
+  padding: 8px 15px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--wine);
+  font-size: .9rem;
+  margin-top: 8px;
+}
+
+/* GALERÍA ILUSTRATIVA */
+
+.wall-preview {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 15px 40px rgba(90,42,60,.07);
+}
+
+.wall-preview-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.wall-preview-header small {
+  color: var(--gold2);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-size: .65rem;
+}
+
+.wall-preview-header h3 {
+  color: var(--wine);
+  font: italic 500 1.8rem "Cormorant Garamond", serif;
+}
+
+.wall-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.wall-photo {
+  min-height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  color: white;
+  font-size: .85rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.wall-photo:nth-child(1) {
+  background:
+    linear-gradient(transparent,rgba(60,30,35,.45)),
+    linear-gradient(135deg,#c7a5a0,#81515c);
+}
+
+.wall-photo:nth-child(2) {
+  background:
+    linear-gradient(transparent,rgba(60,30,35,.45)),
+    linear-gradient(135deg,#dfc9ae,#a98265);
+}
+
+.wall-photo:nth-child(3) {
+  background:
+    linear-gradient(transparent,rgba(60,30,35,.45)),
+    linear-gradient(135deg,#a9b6a1,#63775f);
+}
+
+.wall-photo:nth-child(4) {
+  background:
+    linear-gradient(transparent,rgba(60,30,35,.45)),
+    linear-gradient(135deg,#c7a6b5,#906b83);
+}
+
+.wall-preview-footer {
+  text-align: center;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* CÓMO FUNCIONA */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 22px;
+  counter-reset: s;
+  padding: 0;
+  list-style: none;
+  margin-top: 28px;
+}
+
+.steps li {
+  counter-increment: s;
+  border-top: 2px solid var(--gold);
+  padding-top: 14px;
+}
+
+.steps li::before {
+  content: counter(s);
+  font: italic 500 2rem "Cormorant Garamond", serif;
+  color: var(--gold);
+}
+
+.steps b {
+  display: block;
+  font-weight: 500;
+}
+
+.steps span {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 36px 0;
+  color: var(--muted);
+  font-size: .9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px) {
+  .hero,
+  .demo,
+  .wall-content {
+    grid-template-columns: 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .phone {
+    order: -1;
+  }
+
+  .wall-preview {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media(max-width:480px) {
+  body {
+    font-size: 16px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .phone {
+    width: min(290px, 100%);
+    height: 540px;
+  }
+
+  header.top {
+    gap: 12px;
+  }
+
+  header.top .btn {
+    padding: 10px 15px;
+    font-size: .85rem;
+  }
+
+  .wall-gallery {
+    gap: 8px;
+  }
+
+  .wall-photo {
+    min-height: 120px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <div class="wrap">
-<header class="top">
-  <a class="brand" href="#"><span class="mono">M<i>G</i></span><span><b>Milena Gauto Studio</b><small>Invitaciones digitales</small></span></a>
-  <a class="btn alt" href="#contacto">Pedir presupuesto</a>
-</header>
 
-<div class="hero">
-  <div>
-    <h1>Tu invitación es una experiencia, no un PDF.</h1>
-    <p>Invitaciones web con cuenta regresiva, mapa, confirmación por WhatsApp y un muro donde tus invitados suben fotos durante la fiesta.</p>
-    <div class="row">
-      <a class="btn" href="#demos">Ver demos</a>
-      <a class="btn alt" href="#muro">Probar el muro de fotos</a>
+  <!-- ENCABEZADO -->
+
+  <header class="top">
+    <a class="brand" href="#">
+      <span class="mono">M<i>G</i></span>
+      <span>
+        <b>Milena Gauto Studio</b>
+        <small>Invitaciones digitales</small>
+      </span>
+    </a>
+
+    <a class="btn alt" href="#contacto">Pedir presupuesto</a>
+  </header>
+
+  <!-- PORTADA -->
+
+  <div class="hero">
+
+    <div>
+      <h1>Tu invitación es una experiencia, no un PDF.</h1>
+
+      <p>
+        Invitaciones web con cuenta regresiva, mapa,
+        confirmación por WhatsApp y experiencias digitales
+        personalizadas para tus momentos especiales.
+      </p>
+
+      <div class="row">
+        <a class="btn" href="#demos">Ver demos</a>
+        <a class="btn alt" href="#muro">Conocer el muro de fotos</a>
+      </div>
     </div>
+
+    <div class="phone" id="heroPhone"></div>
+
   </div>
-  <div class="phone" id="heroPhone"></div>
+
 </div>
-</div>
 
-<section id="demos"><div class="wrap">
-  <h2>Probá una invitación real</h2>
-  <p>Elegí un estilo y navegá la invitación dentro del celular, igual que la ve tu invitado.</p>
-  <div class="tabs" id="tabs" role="group" aria-label="Demos"></div>
-  <div class="demo">
-    <div class="meta" id="meta"></div>
-    <div class="phone" id="demoPhone"></div>
+<!-- DEMOSTRACIONES -->
+
+<section id="demos">
+
+  <div class="wrap">
+
+    <h2>Probá una invitación real</h2>
+
+    <p>
+      Elegí un estilo y navegá la invitación dentro del celular,
+      igual que la ve tu invitado.
+    </p>
+
+    <div
+      class="tabs"
+      id="tabs"
+      role="group"
+      aria-label="Elegir invitación"
+    ></div>
+
+    <div class="demo">
+
+      <div class="meta" id="meta"></div>
+
+      <div class="phone" id="demoPhone"></div>
+
+    </div>
+
   </div>
-</div></section>
 
-<section id="muro"><div class="wrap">
-  <h2>Muro de fotos en vivo</h2>
-  <p>Subí una foto desde tu celular y aparece acá en segundos. En una fiesta real, esta pantalla se proyecta en el salón.</p>
-  <div class="wall-bar">
-    <input type="file" id="file" accept="image/*" multiple hidden>
-    <button class="btn" id="up">Subir fotos</button>
-    <a class="btn alt" id="projector" href="#">Modo pantalla</a>
-    <span class="status" id="status" role="status"></span>
+</section>
+
+<!-- MURO DE FOTOS -->
+
+<section id="muro">
+
+  <div class="wrap">
+
+    <h2>Muro de fotos en vivo</h2>
+
+    <p class="wall-intro">
+      Convertí los momentos de tu celebración en recuerdos compartidos.
+      Una galería digital donde las fotografías de tus invitados
+      pueden reunirse durante el evento.
+    </p>
+
+    <div class="wall-content">
+
+      <div class="wall-copy">
+
+        <h3>Todos los recuerdos en un solo lugar.</h3>
+
+        <p>
+          El muro de fotos permite reunir las imágenes de tus invitados
+          en una galería digital que puede proyectarse durante la fiesta.
+          Una manera especial de revivir cada momento desde distintas miradas.
+        </p>
+
+        <ul class="wall-features">
+          <li>Galería digital personalizada para tu evento.</li>
+          <li>Visualización de fotografías durante la celebración.</li>
+          <li>Diseño adaptado a la temática de tu invitación.</li>
+          <li>Opción de visualización en una pantalla o proyector.</li>
+        </ul>
+
+        <span class="wall-note">
+          Servicio adicional disponible
+        </span>
+
+      </div>
+
+      <!-- VISTA ILUSTRATIVA: NO PERMITE SUBIR FOTOS -->
+
+      <div class="wall-preview">
+
+        <div class="wall-preview-header">
+          <small>Un recuerdo compartido</small>
+          <h3>Nuestra celebración</h3>
+        </div>
+
+        <div class="wall-gallery">
+
+          <div class="wall-photo">
+            <span>Momentos especiales</span>
+          </div>
+
+          <div class="wall-photo">
+            <span>Personas queridas</span>
+          </div>
+
+          <div class="wall-photo">
+            <span>Sonrisas inolvidables</span>
+          </div>
+
+          <div class="wall-photo">
+            <span>Un día para recordar</span>
+          </div>
+
+        </div>
+
+        <div class="wall-preview-footer">
+          Ejemplo ilustrativo de una galería personalizada
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
-  <div class="grid" id="grid"></div>
-</div></section>
 
-<section id="como"><div class="wrap">
-  <h2>Cómo funciona</h2>
-  <ol class="steps">
-    <li><b>Elegís el diseño</b><span>Colores, fotos y textos a medida de tu evento.</span></li>
-    <li><b>Compartís el link</b><span>Tus invitados lo abren desde WhatsApp, sin instalar nada.</span></li>
-    <li><b>Confirman asistencia</b><span>Las respuestas te llegan ordenadas, con restricciones de menú.</span></li>
-    <li><b>Fiesta y álbum</b><span>Las fotos del muro se guardan y te las entrego al terminar.</span></li>
-  </ol>
-</div></section>
+</section>
 
-<section id="contacto"><div class="wrap">
-  <h2>Hagamos la tuya</h2>
-  <p>Escribime por mensaje directo en Instagram con la fecha y el tipo de evento y te respondo con una propuesta.</p>
-  <div class="row" style="margin-top:20px">
-    <a class="btn" href="https://instagram.com/milenagauto.studio" target="_blank" rel="noopener">@milenagauto.studio</a>
+<!-- CÓMO FUNCIONA -->
+
+<section id="como">
+
+  <div class="wrap">
+
+    <h2>Cómo funciona</h2>
+
+    <ol class="steps">
+
+      <li>
+        <b>Elegís el diseño</b>
+        <span>Colores, fotos y textos a medida de tu evento.</span>
+      </li>
+
+      <li>
+        <b>Compartís el link</b>
+        <span>Tus invitados lo abren desde WhatsApp, sin instalar nada.</span>
+      </li>
+
+      <li>
+        <b>Confirman asistencia</b>
+        <span>Las respuestas llegan ordenadas, con restricciones de menú.</span>
+      </li>
+
+      <li>
+        <b>Disfrutás la fiesta</b>
+        <span>Podés sumar servicios digitales adicionales, como el muro de fotos.</span>
+      </li>
+
+    </ol>
+
   </div>
-</div></section>
 
-<footer><div class="wrap"><span class="mono" style="font-size:1.6rem">M<i>G</i></span><br>15 años · Bautismos · Casamientos · @milenagauto.studio</div></footer>
+</section>
+
+<!-- CONTACTO -->
+
+<section id="contacto">
+
+  <div class="wrap">
+
+    <h2>Hagamos la tuya</h2>
+
+    <p>
+      Escribime por mensaje directo en Instagram con la fecha
+      y el tipo de evento y te respondo con una propuesta personalizada.
+    </p>
+
+    <div class="row" style="margin-top:20px">
+
+      <a
+        class="btn"
+        href="https://instagram.com/milenagauto.studio"
+        target="_blank"
+        rel="noopener"
+      >
+        @milenagauto.studio
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PIE DE PÁGINA -->
+
+<footer>
+
+  <div class="wrap">
+
+    <span class="mono" style="font-size:1.6rem">M<i>G</i></span>
+
+    <br>
+
+    15 años · Bautismos · Casamientos · @milenagauto.studio
+
+  </div>
+
+</footer>
 
 <script>
-/* ============ CONFIGURACIÓN: editá solo esta parte ============ */
-const CONFIG = {
-  cloudName: "TU_CLOUD_NAME",          // Cloudinary > Dashboard
-  uploadPreset: "TU_UPLOAD_PRESET",    // preset "Unsigned" creado en Cloudinary
-  defaultEvent: "demo",                // etiqueta (tag) del evento por defecto
-  refreshSeconds: 8
-};
+
+/* ==========================================
+   CONFIGURACIÓN DE LAS INVITACIONES
+========================================== */
+
 const DEMOS = [
+
   {
     name: "Bautismo",
     url: "/demo/bautismo/",
     text: "Una invitación delicada, dinámica y especial para celebrar un bautismo.",
-    items: ["Cuenta regresiva", "Mapa de Google"]
+    items: [
+      "Cuenta regresiva",
+      "Mapa de Google",
+      "Confirmación por WhatsApp"
+    ]
   },
+
   {
     name: "15 años",
     url: "/demo/15-anios/",
     text: "Una invitación elegante con animaciones y detalles especiales.",
-    items: ["Cuenta regresiva", "RSVP", "Lista de regalos"]
+    items: [
+      "Cuenta regresiva",
+      "RSVP",
+      "Lista de regalos"
+    ]
   },
+
   {
     name: "Casamiento",
     url: "/demo/casamiento/",
     text: "Una invitación romántica con detalles personalizados.",
-    items: ["Cuenta regresiva", "Menú especial", "Muro de fotos"]
+    items: [
+      "Cuenta regresiva",
+      "Menú especial",
+      "Información del evento"
+    ]
   }
+
 ];
-/* ================================================================ */
-
-const $ = s => document.querySelector(s);
-const params = new URLSearchParams(location.search);
-const EVENT = (params.get("evento") || CONFIG.defaultEvent).replace(/[^a-z0-9_-]/gi, "").toLowerCase();
-if (params.get("modo") === "pantalla") document.body.classList.add("pantalla");
 
 
-/* ---- Demos ---- */
-function phone(el, d){
-  el.innerHTML = d && d.url
-    ? '<iframe loading="lazy" src="' + d.url + '" title="Demo ' + d.name + '"></iframe>'
-    : '<div class="empty">Agregá el link de esta demo en la lista DEMOS del archivo index.html.</div>';
+/* ==========================================
+   ELEMENTOS
+========================================== */
+
+const $ = selector => document.querySelector(selector);
+
+
+/* ==========================================
+   CARGAR INVITACIÓN EN EL CELULAR
+========================================== */
+
+function phone(element, demo) {
+
+  element.innerHTML = "";
+
+  if (!demo || !demo.url) {
+
+    const empty = document.createElement("div");
+
+    empty.className = "empty";
+    empty.textContent = "Demo próximamente disponible.";
+
+    element.appendChild(empty);
+
+    return;
+  }
+
+  const iframe = document.createElement("iframe");
+
+  iframe.loading = "lazy";
+  iframe.src = demo.url;
+  iframe.title = "Demo de invitación: " + demo.name;
+
+  element.appendChild(iframe);
+
 }
-function showDemo(i){
-  const d = DEMOS[i];
-  document.querySelectorAll("#tabs button").forEach((b, n) => b.setAttribute("aria-pressed", n === i));
-  $("#meta").innerHTML = "<h3>" + d.name + "</h3><p>" + d.text + "</p><ul>" + d.items.map(x => "<li>" + x + "</li>").join("") + "</ul>" +
-    (d.url ? '<a class="btn alt" target="_blank" rel="noopener" href="' + d.url + '">Abrir en pantalla completa</a>' : "");
-  phone($("#demoPhone"), d);
+
+
+/* ==========================================
+   MOSTRAR DEMO SELECCIONADA
+========================================== */
+
+function showDemo(index) {
+
+  const demo = DEMOS[index];
+
+  document
+    .querySelectorAll("#tabs button")
+    .forEach((button, number) => {
+
+      button.setAttribute(
+        "aria-pressed",
+        number === index ? "true" : "false"
+      );
+
+    });
+
+  $("#meta").innerHTML = `
+    <h3>${demo.name}</h3>
+
+    <p>${demo.text}</p>
+
+    <ul>
+      ${demo.items.map(item => `<li>${item}</li>`).join("")}
+    </ul>
+
+    <a
+      class="btn alt"
+      href="${demo.url}"
+      target="_blank"
+      rel="noopener"
+    >
+      Abrir en pantalla completa
+    </a>
+  `;
+
+  phone($("#demoPhone"), demo);
+
 }
-DEMOS.forEach((d, i) => {
-  const b = document.createElement("button");
-  b.textContent = d.name; b.onclick = () => showDemo(i);
-  $("#tabs").appendChild(b);
+
+
+/* ==========================================
+   CREAR BOTONES DE LAS DEMOS
+========================================== */
+
+DEMOS.forEach((demo, index) => {
+
+  const button = document.createElement("button");
+
+  button.type = "button";
+  button.textContent = demo.name;
+
+  button.setAttribute(
+    "aria-pressed",
+    index === 0 ? "true" : "false"
+  );
+
+  button.onclick = () => showDemo(index);
+
+  $("#tabs").appendChild(button);
+
 });
-phone($("#heroPhone"), DEMOS.find(d => d.url));
+
+
+/* ==========================================
+   CARGAR DEMO INICIAL
+========================================== */
+
+// La primera invitación aparece en la portada.
+
+phone($("#heroPhone"), DEMOS[0]);
+
+// Mostrar la primera demo en la sección de demostraciones.
+
 showDemo(0);
 
-/* ---- Muro de fotos (Cloudinary, sin base de datos) ---- */
-const base = "https://res.cloudinary.com/" + CONFIG.cloudName;
-const seen = new Set();
-const setStatus = t => $("#status").textContent = t;
 
-async function loadWall(){
-  try {
-    // Requiere activar "Resource list" en Cloudinary > Settings > Security
-    const r = await fetch(base + "/image/list/" + EVENT + ".json?t=" + Date.now());
-    if (!r.ok) throw new Error(r.status);
-    const { resources } = await r.json();
-    resources.sort((a, b) => b.version - a.version);
-    const grid = $("#grid"), first = seen.size === 0;
-    for (const x of resources.slice().reverse()) {
-      if (seen.has(x.public_id)) continue;
-      seen.add(x.public_id);
-      const a = document.createElement("a");
-      const path = x.public_id + "." + x.format;
-      a.href = base + "/image/upload/fl_attachment/v" + x.version + "/" + path;
-      a.innerHTML = '<img loading="lazy" alt="Foto del evento" src="' + base + "/image/upload/c_limit,w_600,q_auto,f_auto/v" + x.version + "/" + path + '">';
-      if (!first) a.className = "new";
-      grid.prepend(a);
-    }
-    setStatus(resources.length ? resources.length + " fotos en el muro" : "Todavía no hay fotos. Subí la primera.");
-  } catch (e) {
-    setStatus("No se pudo cargar el muro. Revisá la configuración de Cloudinary.");
-  }
-}
+/* ==========================================
+   FIN DEL SCRIPT
+   No se utiliza Cloudinary.
+   No hay formularios de carga de imágenes.
+   No hay conexión a almacenamiento externo.
+========================================== */
 
-async function upload(files){
-  let ok = 0;
-  for (const f of files) {
-    setStatus("Subiendo " + (ok + 1) + " de " + files.length + "…");
-    const fd = new FormData();
-    fd.append("file", f);
-    fd.append("upload_preset", CONFIG.uploadPreset);
-    fd.append("tags", EVENT);
-    try {
-      const r = await fetch("https://api.cloudinary.com/v1_1/" + CONFIG.cloudName + "/image/upload", { method: "POST", body: fd });
-      if (r.ok) ok++;
-    } catch (e) {}
-  }
-  setStatus(ok === files.length ? "¡Listo! Tus fotos ya están en el muro." : "Se subieron " + ok + " de " + files.length + ". Probá de nuevo con las que faltan.");
-  setTimeout(loadWall, 1500);
-}
-
-$("#up").onclick = () => $("#file").click();
-$("#file").onchange = e => { if (e.target.files.length) upload([...e.target.files]); e.target.value = ""; };
-$("#projector").onclick = e => { e.preventDefault(); location.search = "?evento=" + EVENT + "&modo=pantalla"; };
-
-if (CONFIG.cloudName !== "TU_CLOUD_NAME") { loadWall(); setInterval(loadWall, CONFIG.refreshSeconds * 1000); }
-else setStatus("Configurá tu cloudName y uploadPreset en index.html para activar el muro.");
 </script>
+
 </body>
 </html>
