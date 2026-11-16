@@ -117,10 +117,9 @@ footer{padding:36px 0;color:var(--muted);font-size:.9rem;border-top:1px solid va
 
 <section id="contacto"><div class="wrap">
   <h2>Hagamos la tuya</h2>
-  <p>Contame la fecha y el tipo de evento y te respondo con una propuesta.</p>
+  <p>Escribime por mensaje directo en Instagram con la fecha y el tipo de evento y te respondo con una propuesta.</p>
   <div class="row" style="margin-top:20px">
-    <a class="btn" id="wa" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-    <a class="btn alt" href="https://instagram.com/milenagauto.studio" target="_blank" rel="noopener">@milenagauto.studio</a>
+    <a class="btn" href="https://instagram.com/milenagauto.studio" target="_blank" rel="noopener">@milenagauto.studio</a>
   </div>
 </div></section>
 
@@ -132,7 +131,6 @@ const CONFIG = {
   cloudName: "TU_CLOUD_NAME",          // Cloudinary > Dashboard
   uploadPreset: "TU_UPLOAD_PRESET",    // preset "Unsigned" creado en Cloudinary
   defaultEvent: "demo",                // etiqueta (tag) del evento por defecto
-  whatsapp: "5493625533641",
   refreshSeconds: 8
 };
 const DEMOS = [
@@ -148,7 +146,6 @@ const params = new URLSearchParams(location.search);
 const EVENT = (params.get("evento") || CONFIG.defaultEvent).replace(/[^a-z0-9_-]/gi, "").toLowerCase();
 if (params.get("modo") === "pantalla") document.body.classList.add("pantalla");
 
-$("#wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent("Hola Milena, quiero pedir presupuesto para una invitación web.");
 
 /* ---- Demos ---- */
 function phone(el, d){
