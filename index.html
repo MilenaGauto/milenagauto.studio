@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Milena Gauto Studio · Invitaciones digitales</title>
-
 <meta name="description" content="Invitaciones web personalizadas para bautismos, 15 años y casamientos. Diseños interactivos con cuenta regresiva, mapas, confirmación por WhatsApp y muro de fotos en vivo.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -266,7 +265,7 @@ header.top {
   color: var(--muted);
 }
 
-/* MURO DE FOTOS - PRESENTACIÓN COMERCIAL */
+/* MURO DE FOTOS */
 
 .wall-intro {
   color: var(--muted);
@@ -318,7 +317,7 @@ header.top {
   margin-top: 8px;
 }
 
-/* GALERÍA ILUSTRATIVA */
+/* GALERÍA DE FOTOS ORIGINALES */
 
 .wall-preview {
   background: var(--card);
@@ -352,41 +351,23 @@ header.top {
 }
 
 .wall-photo {
-  min-height: 150px;
+  height: 180px;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  padding: 12px;
-  color: white;
-  font-size: .85rem;
-  background-size: cover;
-  background-position: center;
+  background: var(--line);
 }
 
-.wall-photo:nth-child(1) {
-  background:
-    linear-gradient(transparent,rgba(60,30,35,.45)),
-    linear-gradient(135deg,#c7a5a0,#81515c);
+.wall-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
 }
 
-.wall-photo:nth-child(2) {
-  background:
-    linear-gradient(transparent,rgba(60,30,35,.45)),
-    linear-gradient(135deg,#dfc9ae,#a98265);
-}
-
-.wall-photo:nth-child(3) {
-  background:
-    linear-gradient(transparent,rgba(60,30,35,.45)),
-    linear-gradient(135deg,#a9b6a1,#63775f);
-}
-
-.wall-photo:nth-child(4) {
-  background:
-    linear-gradient(transparent,rgba(60,30,35,.45)),
-    linear-gradient(135deg,#c7a6b5,#906b83);
+.wall-photo:hover img {
+  transform: scale(1.06);
 }
 
 .wall-preview-footer {
@@ -491,7 +472,7 @@ footer {
   }
 
   .wall-photo {
-    min-height: 120px;
+    height: 140px;
   }
 }
 
@@ -561,12 +542,7 @@ footer {
       igual que la ve tu invitado.
     </p>
 
-    <div
-      class="tabs"
-      id="tabs"
-      role="group"
-      aria-label="Elegir invitación"
-    ></div>
+    <div class="tabs" id="tabs" role="group" aria-label="Elegir invitación"></div>
 
     <div class="demo">
 
@@ -619,7 +595,7 @@ footer {
 
       </div>
 
-      <!-- VISTA ILUSTRATIVA: NO PERMITE SUBIR FOTOS -->
+      <!-- GALERÍA ILUSTRATIVA CON IMÁGENES DE TUS DEMOS -->
 
       <div class="wall-preview">
 
@@ -631,19 +607,35 @@ footer {
         <div class="wall-gallery">
 
           <div class="wall-photo">
-            <span>Momentos especiales</span>
+            <img
+              src="/demo/bautismo/img/pexels-karola-g2-5559.jpg"
+              alt="Decoración de bautismo"
+              loading="lazy"
+            >
           </div>
 
           <div class="wall-photo">
-            <span>Personas queridas</span>
+            <img
+              src="/demo/15-anios/img/pexels-flavionascimento-39394234.jpg"
+              alt="Celebración de 15 años"
+              loading="lazy"
+            >
           </div>
 
           <div class="wall-photo">
-            <span>Sonrisas inolvidables</span>
+            <img
+              src="/demo/casamiento/img/pexels-amar-12954015.jpg"
+              alt="Celebración de casamiento"
+              loading="lazy"
+            >
           </div>
 
           <div class="wall-photo">
-            <span>Un día para recordar</span>
+            <img
+              src="/demo/casamiento/img/pexels-franco-monsalvo-252430633-30740005.jpg"
+              alt="Momento especial de una boda"
+              loading="lazy"
+            >
           </div>
 
         </div>
@@ -894,17 +886,14 @@ DEMOS.forEach((demo, index) => {
    CARGAR DEMO INICIAL
 ========================================== */
 
-// La primera invitación aparece en la portada.
-
 phone($("#heroPhone"), DEMOS[0]);
-
-// Mostrar la primera demo en la sección de demostraciones.
 
 showDemo(0);
 
 
 /* ==========================================
    FIN DEL SCRIPT
+
    No se utiliza Cloudinary.
    No hay formularios de carga de imágenes.
    No hay conexión a almacenamiento externo.
