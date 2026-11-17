@@ -57,6 +57,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = 
 /* Música */
 const au = g('au'), mb = g('mb');
 mb.onclick = () => {
-  if (au.paused) au.play().then(() => mb.textContent = '❚❚').catch(() => { mb.title = 'Agregá musica.mp3 en esta carpeta'; });
+  if (au.paused) au.play().then(() => mb.textContent = '❚❚').catch(() => { aviso(SIN_MUSICA); });
   else { au.pause(); mb.textContent = '♪'; }
-};s
+};
+
+/* Aviso visible si la música no puede reproducirse */
+function aviso(t) {
+  const n = document.createElement('div');
+  n.textContent = t; n.setAttribute('role', 'status');
+  n.style.cssText = 'position:fixed;left:12px;right:70px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:40;background:#fbf6f1;color:#7d3a52;border:1px solid #c9a25a;border-radius:14px;padding:10px 14px;font:500 .85rem/1.3 system-ui,sans-serif';
+  document.body.appendChild(n); setTimeout(() => n.remove(), 5000);
+}
+const SIN_MUSICA = 'No se pudo reproducir la música. Verificá que musica.mp3 esté subido en esta misma carpeta.';
