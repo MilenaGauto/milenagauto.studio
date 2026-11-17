@@ -3,34 +3,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sofía &amp; Mateo · Nos casamos</title>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:light;--iv:#f7f4ec;--sage:#dfe7d8;--gr:#2f4a3a;--gold:#a8864d}
-*{box-sizing:border-box;margin:0}
-body{background:var(--iv);color:var(--gr);font:1.2rem/1.55 'Cormorant Garamond',Georgia,serif;text-align:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-.tag{position:fixed;z-index:5;top:calc(env(safe-area-inset-top) + 8px);right:8px;background:var(--iv);border:1px solid var(--gold);padding:2px 10px;font-size:.8rem;letter-spacing:.08em}
-.music{position:fixed;z-index:5;bottom:calc(env(safe-area-inset-bottom) + 12px);right:12px;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--iv);color:var(--gr);font-size:1.2rem;cursor:pointer}
-section{padding:60px 24px}
-.hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,rgba(247,244,236,.62) 0%,rgba(247,244,236,.78) 55%,var(--iv) 100%),url('img/pexels-franco-monsalvo-252430633-30740005.jpg') center/cover no-repeat,var(--sage)}
-.small{font-style:italic;color:var(--gold)}
-.names{font:clamp(3.6rem,17vw,5.6rem)/1.05 'Pinyon Script',cursive;margin:14px 0;animation:in 1.6s ease both}
-.names span{display:block;font-size:.55em;color:var(--gold)}
-@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-h2{font:400 2.6rem 'Pinyon Script',cursive;margin-bottom:18px}
-.rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}.rv.on{opacity:1;transform:none}
-.row{display:grid;gap:26px;max-width:520px;margin:0 auto}
-.row h3{font-weight:500;font-size:1.35rem}
-.alt{background:var(--sage)}
-.car{position:relative;max-width:420px;margin:0 auto;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--gold);padding:8px;background:#fff}
-.car img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);object-fit:cover;opacity:0;transition:opacity 1s}
-.car img.on{opacity:1}
-.dots{display:flex;gap:9px;justify-content:center;margin-top:14px}
-.dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--gr);background:none;padding:0;cursor:pointer}.dots .on{background:var(--gr)}
-.cd{display:flex;gap:22px;justify-content:center;margin:8px 0 24px}.cd strong{display:block;font-size:2.6rem;font-weight:400}.cd span{font-style:italic;color:var(--gold)}
-.btn{display:inline-block;padding:14px 34px;border:1px solid var(--gr);color:var(--gr);text-decoration:none;letter-spacing:.12em;margin:5px;transition:.2s}
-.btn:hover,.btn:focus-visible{background:var(--gr);color:var(--iv);outline:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.names{animation:none}}
-</style></head><body>
-<span class="tag">Plan Interactiva</span>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../plan-badge.css"></head><body>
+<span class="tag" data-plan="interactiva"></span>
 <button class="music" id="mb" aria-label="Música" hidden>♪</button>
 <audio id="au" loop src="musica.mp3"></audio>
 <section class="hero">
@@ -64,16 +39,5 @@ h2{font:400 2.6rem 'Pinyon Script',cursive;margin-bottom:18px}
 <a class="btn" href="https://maps.google.com/?q=Resistencia+Chaco" target="_blank" rel="noopener">VER UBICACIÓN</a>
 <a class="btn" href="https://wa.me/5493624000000?text=Hola!%20Confirmo%20asistencia%20al%20casamiento%20de%20Sof%C3%ADa%20y%20Mateo" target="_blank" rel="noopener">CONFIRMAR</a>
 </section>
-<script>
-const g=i=>document.getElementById(i),t=new Date('2027-10-09T17:00:00-03:00');
-function u(){const x=Math.max(0,t-new Date());g('d').textContent=Math.floor(x/864e5);g('h').textContent=Math.floor(x/36e5)%24;g('m').textContent=Math.floor(x/6e4)%60}
-u();setInterval(u,30000);
-const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.2});
-document.querySelectorAll('.rv').forEach(e=>io.observe(e));
-const im=[...document.querySelectorAll('#car img')],dt=g('dots');let c=0,tm;
-function show(i){c=i;im.forEach((m,k)=>m.classList.toggle('on',k==i));[...dt.children].forEach((b,k)=>b.classList.toggle('on',k==i))}
-im.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Foto '+(i+1));if(!i)b.className='on';b.onclick=()=>{show(i);clearInterval(tm);tm=setInterval(nx,4000)};dt.appendChild(b)});
-function nx(){show((c+1)%im.length)}tm=setInterval(nx,4000);
-const au=g('au'),mb=g('mb');au.addEventListener('canplay',()=>mb.hidden=false,{once:true});
-mb.onclick=()=>{au.paused?au.play():au.pause();mb.textContent=au.paused?'♪':'❚❚'};
-</script></body></html>
+<script src="script.js"></script>
+<script src="../plan-badge.js"></script></body></html>
