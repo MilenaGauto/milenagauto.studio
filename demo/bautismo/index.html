@@ -3,31 +3,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bautismo de Benjamín</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Lora:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:light;--sky:#dcecf7;--blue:#4a7fa8;--navy:#27445e;--gold:#d9ae5b}
-*{box-sizing:border-box;margin:0}
-body{background:#f4f9fd;color:var(--navy);font:1.05rem/1.55 Lora,Georgia,serif;text-align:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-.tag{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:8px;background:#fff;border:1px solid var(--gold);border-radius:20px;padding:3px 11px;font:600 .68rem Fredoka,sans-serif;color:var(--navy)}
-section{padding:44px 24px}
-.hero{background:var(--sky);padding-top:64px}
-.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:5px solid #fff;background:#fff;flex:none}
-.doves{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px}
-.dv{width:52px;height:36px;flex:none}.dv.l{align-self:flex-start;margin-top:18px}.dv.r{transform:scaleX(-1);align-self:flex-end;margin-bottom:22px}
-.dv.s{display:block;width:44px;height:30px;margin:0 auto 6px}
-h1{font:600 clamp(2.6rem,13vw,3.8rem)/1 Fredoka,sans-serif;color:var(--blue)}
-.lead{font-style:italic;margin:10px 0}
-.pill{display:inline-block;margin-top:8px;padding:8px 22px;border-radius:30px;background:#fff;border:2px solid var(--gold);font:500 1rem Fredoka,sans-serif}
-h2{font:500 1.6rem Fredoka,sans-serif;color:var(--blue);margin-bottom:14px}
-.box{background:#fff;border-radius:22px;padding:22px;max-width:380px;margin:0 auto 14px;box-shadow:0 6px 18px rgba(74,127,168,.13)}
-.box b{font:500 1.15rem Fredoka,sans-serif;display:block}
-.cd{display:flex;gap:14px;justify-content:center}
-.cd strong{display:block;font:600 2.3rem Fredoka,sans-serif;color:var(--blue)}.cd span{font-size:.8rem}
-.btn{display:inline-block;margin:6px;padding:13px 26px;border-radius:40px;background:var(--blue);color:#fff;text-decoration:none;font:500 1rem Fredoka,sans-serif}
-.btn.alt{background:#fff;color:var(--blue);border:2px solid var(--blue)}
-.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-</style></head><body>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../plan-badge.css"></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="dove" viewBox="0 4 110 74"><g fill="#fff" stroke="#4a7fa8" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M52 58C56 44 66 30 88 20C84 32 86 40 82 48C74 54 64 56 52 58Z" fill="#eaf3fa"/><path d="M12 64L0 59L3 67L0 75L16 69Z"/><path d="M10 64C24 60 38 62 52 58C66 54 76 46 80 38C82 32 90 28 96 32C100 35 98 40 94 42C90 46 90 52 84 58C74 68 56 74 40 72C28 71 18 68 10 64Z"/><path d="M42 62C36 44 44 22 68 8C66 22 70 34 78 42C66 46 54 52 42 62Z"/><path d="M50 56C50 44 56 30 66 20M58 52C60 42 66 32 74 26" fill="none" stroke-width="1"/></g><path d="M98 33L108 36L98 39Z" fill="#d9ae5b"/><circle cx="92" cy="33.5" r="1.5" fill="#27445e"/></symbol></defs></svg>
-<span class="tag">Plan Esencial</span>
+<span class="tag" data-plan="esencial"></span>
 <section class="hero">
 <div class="doves"><svg class="dv l" aria-hidden="true"><use href="#dove"/></svg><img class="photo" src="img/pexels-karola-g2-5559.jpg" alt="" onerror="this.style.display='none'"><svg class="dv r" aria-hidden="true"><use href="#dove"/></svg></div>
 <p class="lead">Con alegría te invitamos al bautismo de</p>
@@ -47,8 +26,5 @@ h2{font:500 1.6rem Fredoka,sans-serif;color:var(--blue);margin-bottom:14px}
 <p style="margin:18px 0 8px">Confirmá tu asistencia antes del 5 de abril</p>
 <a class="btn" href="https://wa.me/5493624000000?text=Hola!%20Confirmo%20asistencia%20al%20bautismo%20de%20Benjam%C3%ADn" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
 </section>
-<script>
-const t=new Date('2027-04-18T11:00:00-03:00'),g=i=>document.getElementById(i);
-function u(){const x=Math.max(0,t-new Date());g('d').textContent=Math.floor(x/864e5);g('h').textContent=Math.floor(x/36e5)%24;g('m').textContent=Math.floor(x/6e4)%60}
-u();setInterval(u,30000);
-</script></body></html>
+<script src="script.js"></script>
+<script src="../plan-badge.js"></script></body></html>
