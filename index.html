@@ -416,6 +416,84 @@ header.top {
   font-size: .95rem;
 }
 
+/* PLANES */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: 0 15px 40px rgba(90,42,60,.07);
+}
+
+.plan.star {
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px rgba(201,162,90,.22);
+}
+
+.plan h3 {
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--wine);
+}
+
+.plan .price {
+  font: italic 500 2.2rem "Cormorant Garamond", serif;
+  color: var(--gold2);
+  margin: 6px 0 14px;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  color: var(--muted);
+  flex: 1;
+}
+
+.plan li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.plan li::before {
+  content: "✦";
+  color: var(--gold);
+}
+
+.plan .btn {
+  text-align: center;
+}
+
+.plans-extra {
+  margin-top: 26px;
+  padding: 22px 26px;
+  border: 1px dashed var(--gold);
+  border-radius: 18px;
+  color: var(--muted);
+}
+
+.plans-extra b {
+  color: var(--wine);
+}
+
+@media(max-width:800px) {
+  .plans {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* TESTIMONIOS */
 
 .testi {
@@ -755,6 +833,70 @@ footer {
 
 </section>
 
+<!-- PLANES -->
+
+<section id="planes">
+
+  <div class="wrap">
+
+    <h2>Nuestros planes</h2>
+
+    <p>
+      Elegí el plan que mejor se adapte a tu evento.
+      Reservá tu diseño con el 50%.
+    </p>
+
+    <div class="plans">
+
+      <div class="plan">
+        <h3>Esencial</h3>
+        <div class="price">$55.000</div>
+        <ul>
+          <li>Invitación web personalizada</li>
+          <li>Cuenta regresiva</li>
+          <li>Ubicación y confirmación por WhatsApp</li>
+          <li>Diseño adaptable a celulares</li>
+        </ul>
+        <a class="btn alt" href="#demos" data-demo="0">Ver demo</a>
+      </div>
+
+      <div class="plan">
+        <h3>Interactiva</h3>
+        <div class="price">$79.000</div>
+        <ul>
+          <li>Todo lo del plan Esencial</li>
+          <li>Animaciones y transiciones</li>
+          <li>Carrusel de fotografías</li>
+          <li>Música y galería</li>
+          <li>Secciones personalizadas</li>
+        </ul>
+        <a class="btn alt" href="#demos" data-demo="1">Ver demo</a>
+      </div>
+
+      <div class="plan star">
+        <h3>Premium Experience</h3>
+        <div class="price">$115.000</div>
+        <ul>
+          <li>Diseño exclusivo desde cero</li>
+          <li>Animaciones avanzadas</li>
+          <li>Formulario de asistencia</li>
+          <li>Cronograma, regalos y dress code</li>
+          <li>Experiencia web personalizada</li>
+        </ul>
+        <a class="btn" href="#demos" data-demo="2">Ver demo</a>
+      </div>
+
+    </div>
+
+    <div class="plans-extra">
+      <b>Proyectos exclusivos:</b> muro de fotos en vivo y funcionalidades especiales.
+      Consultá por presupuesto.
+    </div>
+
+  </div>
+
+</section>
+
 <!-- CÓMO FUNCIONA -->
 
 <section id="como">
@@ -863,35 +1005,40 @@ footer {
 const DEMOS = [
 
   {
-    name: "Bautismo",
+    name: "Esencial · Bautismo",
     url: "/demo/bautismo/",
-    text: "Una invitación delicada, dinámica y especial para celebrar un bautismo.",
+    text: "Plan Esencial ($55.000): una invitación clara, prolija y lista para compartir.",
     items: [
+      "Invitación web personalizada",
       "Cuenta regresiva",
-      "Mapa de Google",
-      "Confirmación por WhatsApp"
+      "Ubicación y confirmación por WhatsApp",
+      "Diseño adaptable a celulares"
     ]
   },
 
   {
-    name: "15 años",
+    name: "Interactiva · 15 años",
     url: "/demo/15-anios/",
-    text: "Una invitación elegante con animaciones y detalles especiales.",
+    text: "Plan Interactiva ($79.000): suma movimiento, fotos y música para sorprender.",
     items: [
-      "Cuenta regresiva",
-      "RSVP",
-      "Lista de regalos"
+      "Todo lo del plan Esencial",
+      "Animaciones y transiciones",
+      "Carrusel de fotografías",
+      "Música y galería",
+      "Secciones personalizadas"
     ]
   },
 
   {
-    name: "Casamiento",
+    name: "Premium · Casamiento",
     url: "/demo/casamiento/",
-    text: "Una invitación romántica con detalles personalizados.",
+    text: "Plan Premium Experience ($115.000): una experiencia web exclusiva, diseñada desde cero.",
     items: [
-      "Cuenta regresiva",
-      "Menú especial",
-      "Información del evento"
+      "Diseño exclusivo desde cero",
+      "Animaciones avanzadas",
+      "Formulario de asistencia",
+      "Cronograma, regalos y dress code",
+      "Experiencia web personalizada"
     ]
   }
 
@@ -1026,6 +1173,15 @@ DEMOS.forEach((demo, index) => {
 phone($("#heroPhone"), DEMOS[0]);
 
 showDemo(0);
+
+
+/* ==========================================
+   BOTONES "VER DEMO" DE LOS PLANES
+========================================== */
+
+document.querySelectorAll("[data-demo]").forEach(link => {
+  link.addEventListener("click", () => showDemo(Number(link.dataset.demo)));
+});
 
 
 /* ==========================================
