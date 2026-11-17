@@ -10,7 +10,10 @@ body{background:#f4f9fd;color:var(--navy);font:1.05rem/1.55 Lora,Georgia,serif;t
 .tag{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:8px;background:#fff;border:1px solid var(--gold);border-radius:20px;padding:3px 11px;font:600 .68rem Fredoka,sans-serif;color:var(--navy)}
 section{padding:44px 24px}
 .hero{background:var(--sky);padding-top:64px}
-.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:5px solid #fff;background:#fff;margin-bottom:16px}
+.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;border:5px solid #fff;background:#fff;flex:none}
+.doves{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px}
+.dv{width:52px;height:36px;flex:none}.dv.l{align-self:flex-start;margin-top:18px}.dv.r{transform:scaleX(-1);align-self:flex-end;margin-bottom:22px}
+.dv.s{display:block;width:44px;height:30px;margin:0 auto 6px}
 h1{font:600 clamp(2.6rem,13vw,3.8rem)/1 Fredoka,sans-serif;color:var(--blue)}
 .lead{font-style:italic;margin:10px 0}
 .pill{display:inline-block;margin-top:8px;padding:8px 22px;border-radius:30px;background:#fff;border:2px solid var(--gold);font:500 1rem Fredoka,sans-serif}
@@ -23,14 +26,16 @@ h2{font:500 1.6rem Fredoka,sans-serif;color:var(--blue);margin-bottom:14px}
 .btn.alt{background:#fff;color:var(--blue);border:2px solid var(--blue)}
 .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 </style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="dove" viewBox="0 4 110 74"><g fill="#fff" stroke="#4a7fa8" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><path d="M52 58C56 44 66 30 88 20C84 32 86 40 82 48C74 54 64 56 52 58Z" fill="#eaf3fa"/><path d="M12 64L0 59L3 67L0 75L16 69Z"/><path d="M10 64C24 60 38 62 52 58C66 54 76 46 80 38C82 32 90 28 96 32C100 35 98 40 94 42C90 46 90 52 84 58C74 68 56 74 40 72C28 71 18 68 10 64Z"/><path d="M42 62C36 44 44 22 68 8C66 22 70 34 78 42C66 46 54 52 42 62Z"/><path d="M50 56C50 44 56 30 66 20M58 52C60 42 66 32 74 26" fill="none" stroke-width="1"/></g><path d="M98 33L108 36L98 39Z" fill="#d9ae5b"/><circle cx="92" cy="33.5" r="1.5" fill="#27445e"/></symbol></defs></svg>
 <span class="tag">Plan Esencial</span>
 <section class="hero">
-<img class="photo" src="img/pexels-karola-g2-5559.jpg" alt="" onerror="this.style.display='none'">
+<div class="doves"><svg class="dv l" aria-hidden="true"><use href="#dove"/></svg><img class="photo" src="img/pexels-karola-g2-5559.jpg" alt="" onerror="this.style.display='none'"><svg class="dv r" aria-hidden="true"><use href="#dove"/></svg></div>
 <p class="lead">Con alegría te invitamos al bautismo de</p>
 <h1>Benjamín</h1>
 <span class="pill">Domingo 18 de abril de 2027</span>
 </section>
 <section>
+<svg class="dv s" aria-hidden="true"><use href="#dove"/></svg>
 <h2>Cuándo y dónde</h2>
 <div class="box"><b>Misa y bautismo</b>Parroquia Nuestra Señora de Itatí<br>11:00 h · Av. Sarmiento 1200</div>
 <div class="box"><b>Almuerzo familiar</b>Quinta Los Jazmines<br>13:30 h · Resistencia, Chaco</div>
