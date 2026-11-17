@@ -3,43 +3,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mis 15 · Valentina</title>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:light;--bg:#1d1440;--bg2:#2b1d5c;--lil:#c9b6ff;--rose:#eab5a2;--txt:#f5efff}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font:300 1.02rem/1.6 Jost,system-ui,sans-serif;text-align:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);overflow-x:hidden}
-.tag{position:fixed;z-index:5;top:calc(env(safe-area-inset-top) + 8px);right:8px;background:rgba(29,20,64,.85);border:1px solid var(--rose);border-radius:20px;padding:3px 11px;font:500 .68rem Jost;color:var(--rose)}
-.music{position:fixed;z-index:5;bottom:calc(env(safe-area-inset-bottom) + 12px);right:12px;width:46px;height:46px;border-radius:50%;border:1px solid var(--rose);background:var(--bg);color:var(--rose);font-size:1.1rem;cursor:pointer}
-section{padding:64px 24px;position:relative;overflow:hidden}
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 35%,var(--bg2),var(--bg) 72%)}
-.orb{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(234,181,162,.35),transparent 70%);top:12%;left:50%;margin-left:-150px;animation:fl 7s ease-in-out infinite alternate}
-@keyframes fl{to{transform:translateY(26px) scale(1.12)}}
-.star{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--lil);animation:tw 3s infinite alternate}
-@keyframes tw{from{opacity:.7}to{opacity:.1}}
-.sub{letter-spacing:.3em;font-size:.8rem;color:var(--lil);position:relative}
-.big{font:clamp(6rem,30vw,11rem)/.9 Italiana,serif;color:var(--rose);position:relative}
-.big span,h1 span{display:inline-block;opacity:0;transform:translateY(40px) rotate(6deg);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes up{to{opacity:1;transform:none}}
-h1{font:400 clamp(2.2rem,9vw,3.6rem) Italiana,serif;letter-spacing:.12em;position:relative}
-h2{font:400 2rem Italiana,serif;color:var(--rose);margin-bottom:24px}
-.rv{opacity:0;transform:translateY(30px) scale(.97);transition:opacity .9s,transform .9s}.rv.on{opacity:1;transform:none}
-.cd{display:flex;gap:12px;justify-content:center}.cd div{min-width:64px}.cd strong{display:block;font:400 2.6rem Italiana,serif;color:var(--rose)}.cd span{font-size:.75rem;color:var(--lil)}
-.tl{max-width:420px;margin:0 auto;text-align:left;border-left:1px solid var(--rose);padding-left:24px}
-.tl div{position:relative;margin-bottom:22px}.tl div::before{content:"";position:absolute;left:-29px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--rose)}
-.tl b{font:400 1.25rem Italiana,serif;color:var(--rose);display:block}
-.card{max-width:420px;margin:0 auto 16px;border:1px solid rgba(201,182,255,.35);border-radius:20px;padding:24px}
-.card b{font:400 1.4rem Italiana,serif;display:block;margin-bottom:6px;color:var(--rose)}
-.sw{display:flex;gap:10px;justify-content:center;margin-top:12px}.sw i{width:26px;height:26px;border-radius:50%;border:1px solid var(--lil)}
-form{max-width:420px;margin:0 auto;text-align:left;display:grid;gap:14px}
-label{font-size:.85rem;color:var(--lil)}
-input,select,textarea{width:100%;margin-top:4px;padding:12px 14px;border-radius:12px;border:1px solid rgba(201,182,255,.45);background:rgba(255,255,255,.06);color:var(--txt);font:inherit}
-select option{color:#1d1440}
-.btn{display:inline-block;padding:14px 32px;border-radius:40px;background:var(--rose);color:var(--bg);border:0;font:500 1rem Jost;cursor:pointer;text-decoration:none}
-.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--lil);outline-offset:2px}
-.ok{display:none;margin-top:10px;color:var(--lil)}
-@media(prefers-reduced-motion:reduce){.orb,.star{animation:none}.big span,h1 span{opacity:1;transform:none;animation:none}.rv{opacity:1;transform:none;transition:none}}
-</style></head><body>
-<span class="tag">Plan Premium</span>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../plan-badge.css"></head><body>
+<span class="tag" data-plan="premium"></span>
 <button class="music" id="mb" aria-label="Música" hidden>♪</button>
 <audio id="au" loop src="musica.mp3"></audio>
 <section class="hero" id="top">
@@ -79,21 +45,5 @@ select option{color:#1d1440}
 <button class="btn" type="submit">Enviar confirmación</button>
 </form>
 </section>
-<script>
-const g=i=>document.getElementById(i);
-[...'15'].forEach((c,i)=>{const s=document.createElement('span');s.textContent=c;s.style.animationDelay=.2+i*.25+'s';g('n').appendChild(s)});
-[...'VALENTINA'].forEach((c,i)=>{const s=document.createElement('span');s.textContent=c;s.style.animationDelay=.8+i*.07+'s';g('nm').appendChild(s)});
-for(let i=0;i<40;i++){const e=document.createElement('i');e.className='star';e.style.cssText='left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;animation-delay:'+Math.random()*3+'s';g('top').appendChild(e)}
-addEventListener('scroll',()=>{g('top').querySelector('.orb').style.marginTop=Math.min(scrollY*.25,120)+'px'},{passive:true});
-const t=new Date('2027-03-20T18:00:00-03:00');
-function u(){const x=Math.max(0,t-new Date());g('d').textContent=Math.floor(x/864e5);g('h').textContent=Math.floor(x/36e5)%24;g('m').textContent=Math.floor(x/6e4)%60;g('s').textContent=Math.floor(x/1e3)%60}
-u();setInterval(u,1000);
-const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.15});
-document.querySelectorAll('.rv').forEach(e=>io.observe(e));
-g('cp').onclick=()=>{try{navigator.clipboard.writeText(g('al').textContent)}catch(e){}g('cok').style.display='block'};
-g('f').onsubmit=e=>{e.preventDefault();const f=new FormData(g('f'));
-const msg='Hola! Confirmo asistencia a los 15 de Valentina.%0A'+encodeURIComponent('Nombre: '+f.get('n')+'\nPersonas: '+f.get('c')+'\nMenú: '+f.get('m')+(f.get('g')?'\nMensaje: '+f.get('g'):''));
-window.open('https://wa.me/5493624000000?text='+msg,'_blank','noopener')};
-const au=g('au'),mb=g('mb');au.addEventListener('canplay',()=>mb.hidden=false,{once:true});
-mb.onclick=()=>{au.paused?au.play():au.pause();mb.textContent=au.paused?'♪':'❚❚'};
-</script></body></html>
+<script src="script.js"></script>
+<script src="../plan-badge.js"></script></body></html>
