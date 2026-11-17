@@ -2,42 +2,65 @@
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sofía &amp; Mateo · Nos casamos</title>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="../plan-badge.css"></head><body>
-<span class="tag" data-plan="interactiva"></span>
-<button class="music" id="mb" aria-label="Música" hidden>♪</button>
+<span class="tag" data-plan="premium"></span>
+<button class="music" id="mb" aria-label="Música" type="button">♪</button>
 <audio id="au" loop src="musica.mp3"></audio>
-<section class="hero">
+
+<div class="intro" id="intro">
+<p class="small">Sofía &amp; Mateo</p>
+<div class="seal" aria-hidden="true">S&amp;M</div>
+<p>Tenés una invitación</p>
+<button class="btn" id="open" type="button">ABRIR</button>
+</div>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<section class="hero" id="top">
 <p class="small">Con la bendición de nuestras familias</p>
-<div class="names">Sofía<span>&amp;</span>Mateo</div>
+<div class="names"><span id="n1"></span><em>&amp;</em><span id="n2"></span></div>
 <p class="small">¡Nos casamos! · Sábado 9 de octubre de 2027</p>
 </section>
+
 <section class="rv">
-<h2>Nuestra historia</h2>
-<p style="max-width:460px;margin:0 auto">Nos conocimos en una tarde de lluvia y desde entonces no paramos de reírnos. Hoy queremos compartir con vos el día más importante.</p>
-</section>
-<section class="alt rv">
-<h2>Nuestros momentos</h2>
-<div class="car" id="car">
-<img class="on" src="img/pexels-amar-12954015.jpg" alt="Sofía y Mateo">
-<img src="img/pexels-franco-monsalvo-252430633-30740005.jpg" alt="Momento especial">
-</div>
-<div class="dots" id="dots"></div>
-</section>
-<section class="rv">
-<h2>El gran día</h2>
-<div class="row">
-<div><h3>Ceremonia</h3>Iglesia Catedral · 17:00 h<br>Resistencia, Chaco</div>
-<div><h3>Recepción</h3>Estancia La Magnolia · 19:30 h<br>Ruta 16 km 12</div>
-</div>
-<p class="small" style="margin-top:20px">Vestimenta formal · Tonos tierra y verdes</p>
-</section>
-<section class="alt rv">
 <h2>Cuenta regresiva</h2>
-<div class="cd"><div><strong id="d">0</strong><span>días</span></div><div><strong id="h">0</strong><span>horas</span></div><div><strong id="m">0</strong><span>min</span></div></div>
+<div class="cd"><div><strong id="d">0</strong><span>días</span></div><div><strong id="h">0</strong><span>horas</span></div><div><strong id="m">0</strong><span>min</span></div><div><strong id="s">0</strong><span>seg</span></div></div>
+</section>
+
+<section class="alt rv">
+<h2>Cronograma</h2>
+<div class="tl">
+<div><b>17:00 · Ceremonia</b>Iglesia Catedral</div>
+<div><b>19:30 · Recepción</b>Estancia La Magnolia</div>
+<div><b>20:30 · Cena</b>Menú de tres pasos</div>
+<div><b>22:30 · Vals</b>Baile de los novios</div>
+<div><b>23:30 · Fiesta</b>¡A bailar!</div>
+</div>
 <a class="btn" href="https://maps.google.com/?q=Resistencia+Chaco" target="_blank" rel="noopener">VER UBICACIÓN</a>
-<a class="btn" href="https://wa.me/5493624000000?text=Hola!%20Confirmo%20asistencia%20al%20casamiento%20de%20Sof%C3%ADa%20y%20Mateo" target="_blank" rel="noopener">CONFIRMAR</a>
+</section>
+
+<section class="rv">
+<h2>Dress code</h2>
+<p class="small">Formal · Evitar el blanco</p>
+<div class="sw"><i style="background:#2f4a3a"></i><i style="background:#9fb39a"></i><i style="background:#a8864d"></i><i style="background:#d8c7a6"></i></div>
+<h2 style="margin-top:44px">Regalos</h2>
+<p style="max-width:380px;margin:0 auto 12px">Tu presencia es nuestro mejor regalo. Si querés colaborar con nuestra luna de miel:</p>
+<strong id="al">sofia.mateo.boda</strong><br>
+<button class="btn" id="cp" type="button" style="margin-top:14px">COPIAR ALIAS</button>
+<p class="ok" id="cok" role="status">¡Alias copiado!</p>
+</section>
+
+<section class="alt rv">
+<h2>Confirmá tu asistencia</h2>
+<form id="f">
+<label>Nombre y apellido<input name="n" required autocomplete="name"></label>
+<label>Cantidad de personas<select name="c"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+<label>Menú<select name="m"><option>Sin restricciones</option><option>Vegetariano</option><option>Celíaco</option><option>Otro</option></select></label>
+<label>Un mensaje para los novios (opcional)<textarea name="g" rows="3"></textarea></label>
+<button class="btn" type="submit">ENVIAR CONFIRMACIÓN</button>
+</form>
 </section>
 <script src="script.js"></script>
 <script src="../plan-badge.js"></script></body></html>
