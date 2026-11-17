@@ -1,11 +1,60 @@
-const g=i=>document.getElementById(i),t=new Date('2027-10-09T17:00:00-03:00');
-function u(){const x=Math.max(0,t-new Date());g('d').textContent=Math.floor(x/864e5);g('h').textContent=Math.floor(x/36e5)%24;g('m').textContent=Math.floor(x/6e4)%60}
-u();setInterval(u,30000);
-const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.2});
-document.querySelectorAll('.rv').forEach(e=>io.observe(e));
-const im=[...document.querySelectorAll('#car img')],dt=g('dots');let c=0,tm;
-function show(i){c=i;im.forEach((m,k)=>m.classList.toggle('on',k==i));[...dt.children].forEach((b,k)=>b.classList.toggle('on',k==i))}
-im.forEach((_,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','Foto '+(i+1));if(!i)b.className='on';b.onclick=()=>{show(i);clearInterval(tm);tm=setInterval(nx,4000)};dt.appendChild(b)});
-function nx(){show((c+1)%im.length)}tm=setInterval(nx,4000);
-const au=g('au'),mb=g('mb');au.addEventListener('canplay',()=>mb.hidden=false,{once:true});
-mb.onclick=()=>{au.paused?au.play():au.pause();mb.textContent=au.paused?'♪':'❚❚'};
+const g = i => document.getElementById(i);
+
+/* Nombres animados letra por letra */
+[['n1', 'Sofía'], ['n2', 'Mateo']].forEach(([id, nombre], k) => {
+  [...nombre].forEach((c, i) => {
+    const b = document.createElement('b');
+    b.textContent = c; b.style.transitionDelay = (0.5 + k * 0.5 + i * 0.09) + 's';
+    g(id).appendChild(b);
+  });
+});
+
+/* Pétalos que caen */
+for (let i = 0; i < 16; i++) {
+  const p = document.createElement('i');
+  p.style.cssText = 'left:' + Math.random() * 100 + '%;--x:' + (Math.random() * 120 - 60) + 'px;animation-duration:' + (9 + Math.random() * 9) + 's;animation-delay:-' + Math.random() * 12 + 's;opacity:' + (.4 + Math.random() * .5);
+  g('petals').appendChild(p);
+}
+
+/* Invitación cerrada: al abrir, entra el contenido y suena la música */
+document.body.classList.add('lock');
+const au = g('au'), mb = g('mb');
+g('open').onclick = () => {
+  g('intro').classList.add('gone');
+  document.body.classList.remove('lock');
+  document.body.classList.add('opened');
+  au.play().then(() => mb.textContent = '❚❚').catch(() => {});
+};
+mb.onclick = () => {
+  if (au.paused) au.play().then(() => mb.textContent = '❚❚').catch(() => { mb.title = 'Agregá musica.mp3 en esta carpeta'; });
+  else { au.pause(); mb.textContent = '♪'; }
+};
+
+/* Cuenta regresiva */
+const fecha = new Date('2027-10-09T17:00:00-03:00');
+function tick() {
+  const x = Math.max(0, fecha - new Date());
+  g('d').textContent = Math.floor(x / 864e5);
+  g('h').textContent = Math.floor(x / 36e5) % 24;
+  g('m').textContent = Math.floor(x / 6e4) % 60;
+  g('s').textContent = Math.floor(x / 1e3) % 60;
+}
+tick(); setInterval(tick, 1000);
+
+/* Aparición al hacer scroll */
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('on')), { threshold: .15 });
+document.querySelectorAll('.rv').forEach(e => io.observe(e));
+
+/* Copiar alias */
+g('cp').onclick = () => {
+  try { navigator.clipboard.writeText(g('al').textContent); } catch (e) {}
+  g('cok').style.display = 'block';
+};
+
+/* Formulario de asistencia → WhatsApp */
+g('f').onsubmit = e => {
+  e.preventDefault();
+  const f = new FormData(g('f'));
+  const txt = 'Nombre: ' + f.get('n') + '\nPersonas: ' + f.get('c') + '\nMenú: ' + f.get('m') + (f.get('g') ? '\nMensaje: ' + f.get('g') : '');
+  window.open('https://wa.me/5493624000000?text=' + encodeURIComponent('Hola! Confirmo asistencia al casamiento de Sofía y Mateo.\n' + txt), '_blank', 'noopener');
+};
