@@ -5,45 +5,54 @@
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="../plan-badge.css"></head><body>
-<span class="tag" data-plan="premium"></span>
-<button class="music" id="mb" aria-label="Música" hidden>♪</button>
+<span class="tag" data-plan="interactiva"></span>
+<button class="music" id="mb" aria-label="Música" type="button">♪</button>
 <audio id="au" loop src="musica.mp3"></audio>
+
 <section class="hero" id="top">
-<div class="orb"></div>
 <p class="sub">MIS XV AÑOS</p>
-<div class="big" id="n"></div>
-<h1 id="nm"></h1>
+<div class="big">15</div>
+<h1>VALENTINA</h1>
 <p class="sub" style="margin-top:16px">SÁBADO 20 DE MARZO DE 2027</p>
 </section>
+
+<section class="rv">
+<h2>Mi historia</h2>
+<p class="story">Quince años de risas, amigos y sueños. Quiero que seas parte de esta noche tan especial para mí.</p>
+</section>
+
+<section class="rv">
+<h2>Mis momentos</h2>
+<div class="car" id="car" aria-roledescription="carrusel"></div>
+<div class="dots" id="dots"></div>
+</section>
+
+<section class="rv">
+<h2>Galería</h2>
+<div class="gal" id="gal"></div>
+</section>
+
+<section class="rv">
+<h2>Mis cosas favoritas</h2>
+<div class="chips"><span>🎶 Pop y cumbia</span><span>🍫 Chocolate</span><span>💜 Violeta</span><span>📸 Fotos</span><span>✈️ Viajar</span></div>
+</section>
+
+<section class="rv">
+<h2>Cuándo y dónde</h2>
+<div class="cards">
+<div class="card"><b>Ceremonia</b>Parroquia San José · 18:00 h<br>Av. 9 de Julio 450</div>
+<div class="card"><b>Fiesta</b>Salón Las Acacias · 21:00 h<br>Ruta 11 km 5</div>
+</div>
+<a class="btn alt" href="https://maps.google.com/?q=Resistencia+Chaco" target="_blank" rel="noopener">Ver ubicación</a>
+</section>
+
 <section class="rv">
 <h2>Faltan</h2>
-<div class="cd"><div><strong id="d">0</strong><span>días</span></div><div><strong id="h">0</strong><span>horas</span></div><div><strong id="m">0</strong><span>min</span></div><div><strong id="s">0</strong><span>seg</span></div></div>
+<div class="cd"><div><strong id="d">0</strong><span>días</span></div><div><strong id="h">0</strong><span>horas</span></div><div><strong id="m">0</strong><span>min</span></div></div>
+<p class="note">Confirmá tu asistencia antes del 1 de marzo</p>
+<a class="btn" href="https://wa.me/5493624000000?text=Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Valentina" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
 </section>
-<section class="rv">
-<h2>Cronograma</h2>
-<div class="tl">
-<div><b>18:00 · Ceremonia</b>Parroquia San José</div>
-<div><b>21:00 · Recepción</b>Salón Las Acacias</div>
-<div><b>22:00 · Vals</b>Baile de apertura</div>
-<div><b>23:00 · Cena</b>Menú de tres pasos</div>
-<div><b>00:30 · Baile</b>¡A disfrutar!</div>
-</div>
-</section>
-<section class="rv">
-<h2>Dress code</h2>
-<div class="card"><b>Elegante</b>Te sugiero evitar el blanco. Paleta: violeta, azul noche y dorado.<div class="sw"><i style="background:#2b1d5c"></i><i style="background:#c9b6ff"></i><i style="background:#eab5a2"></i><i style="background:#d9ae5b"></i></div></div>
-<h2 style="margin-top:36px">Regalos</h2>
-<div class="card"><b>Tu presencia es mi mejor regalo</b>Si querés colaborar con mi viaje de egresados:<br><strong id="al">valentina.xv</strong><br><button class="btn" style="margin-top:14px" id="cp" type="button">Copiar alias</button><p class="ok" id="cok" role="status">¡Alias copiado!</p></div>
-</section>
-<section class="rv" id="rsvp">
-<h2>Confirmá tu asistencia</h2>
-<form id="f">
-<label>Nombre y apellido<input name="n" required autocomplete="name"></label>
-<label>Cantidad de personas<select name="c"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
-<label>Menú<select name="m"><option>Sin restricciones</option><option>Vegetariano</option><option>Celíaco</option><option>Otro</option></select></label>
-<label>Un mensaje para mí (opcional)<textarea name="g" rows="3"></textarea></label>
-<button class="btn" type="submit">Enviar confirmación</button>
-</form>
-</section>
+
+<div class="lb" id="lb" hidden><img id="lbi" alt=""><button type="button" id="lbx" aria-label="Cerrar">×</button></div>
 <script src="script.js"></script>
 <script src="../plan-badge.js"></script></body></html>
