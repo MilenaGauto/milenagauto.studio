@@ -1,0 +1,25 @@
+:root{color-scheme:light;--iv:#f7f4ec;--sage:#dfe7d8;--gr:#2f4a3a;--gold:#a8864d}
+*{box-sizing:border-box;margin:0}
+body{background:var(--iv);color:var(--gr);font:1.2rem/1.55 'Cormorant Garamond',Georgia,serif;text-align:center;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.tag{position:fixed;z-index:5;top:calc(env(safe-area-inset-top) + 8px);right:8px;background:var(--iv);border:1px solid var(--gold);padding:2px 10px;font-size:.8rem;letter-spacing:.08em}
+.music{position:fixed;z-index:5;bottom:calc(env(safe-area-inset-bottom) + 12px);right:12px;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--iv);color:var(--gr);font-size:1.2rem;cursor:pointer}
+section{padding:60px 24px}
+.hero{min-height:92svh;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,rgba(247,244,236,.62) 0%,rgba(247,244,236,.78) 55%,var(--iv) 100%),url('img/pexels-franco-monsalvo-252430633-30740005.jpg') center/cover no-repeat,var(--sage)}
+.small{font-style:italic;color:var(--gold)}
+.names{font:clamp(3.6rem,17vw,5.6rem)/1.05 'Pinyon Script',cursive;margin:14px 0;animation:in 1.6s ease both}
+.names span{display:block;font-size:.55em;color:var(--gold)}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+h2{font:400 2.6rem 'Pinyon Script',cursive;margin-bottom:18px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}.rv.on{opacity:1;transform:none}
+.row{display:grid;gap:26px;max-width:520px;margin:0 auto}
+.row h3{font-weight:500;font-size:1.35rem}
+.alt{background:var(--sage)}
+.car{position:relative;max-width:420px;margin:0 auto;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--gold);padding:8px;background:#fff}
+.car img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);object-fit:cover;opacity:0;transition:opacity 1s}
+.car img.on{opacity:1}
+.dots{display:flex;gap:9px;justify-content:center;margin-top:14px}
+.dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--gr);background:none;padding:0;cursor:pointer}.dots .on{background:var(--gr)}
+.cd{display:flex;gap:22px;justify-content:center;margin:8px 0 24px}.cd strong{display:block;font-size:2.6rem;font-weight:400}.cd span{font-style:italic;color:var(--gold)}
+.btn{display:inline-block;padding:14px 34px;border:1px solid var(--gr);color:var(--gr);text-decoration:none;letter-spacing:.12em;margin:5px;transition:.2s}
+.btn:hover,.btn:focus-visible{background:var(--gr);color:var(--iv);outline:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.names{animation:none}}
