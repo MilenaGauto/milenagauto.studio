@@ -56,7 +56,7 @@ g('f').onsubmit = e => {
   e.preventDefault();
   const f = new FormData(g('f'));
   const txt = 'Nombre: ' + f.get('n') + '\nPersonas: ' + f.get('c') + '\nMenú: ' + f.get('m') + (f.get('g') ? '\nMensaje: ' + f.get('g') : '');
-  window.open('https://wa.me/5493624000000?text=' + encodeURIComponent('Hola! Confirmo asistencia al casamiento de Sofía y Mateo.\n' + txt), '_blank', 'noopener');
+  window.open('https://wa.me?text=' + encodeURIComponent('Hola! Confirmo asistencia al casamiento de Sofía y Mateo.\n' + txt), '_blank', 'noopener');
 };
 
 /* Aviso visible si la música no puede reproducirse */
