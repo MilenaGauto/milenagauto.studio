@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mi Cumpleaños 40 · Laura Gómez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --emerald-950: #0B241B;
+    --emerald-900: #12382A;
+    --emerald-800: #1B4D3B;
+    --sage: #6E9483;
+    --cream: #FAF8F3;
+    --white: #FFFFFF;
+    --gold: #C8A24E;
+    --gold-soft: #E5CE94;
+    --border: rgba(200, 162, 78, 0.28);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    background: var(--cream);
+    color: var(--emerald-950);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+
+  .demo-ribbon {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 90;
+    background: rgba(11, 36, 27, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--gold);
+    color: var(--gold-soft);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  .hero {
+    min-height: 92vh;
+    background:
+      radial-gradient(circle at 80% 15%, rgba(200, 162, 78, 0.22), transparent 45%),
+      linear-gradient(165deg, var(--emerald-950) 0%, var(--emerald-900) 58%, var(--emerald-800) 100%);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 72px 20px 56px;
+  }
+
+  .badge-40 {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold-soft);
+    padding: 5px 16px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+    font-style: italic;
+    line-height: 1.02;
+    color: var(--white);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+    color: var(--gold-soft);
+    margin-top: 4px;
+  }
+
+  .cover-frame {
+    width: min(295px, 80vw);
+    aspect-ratio: 4 / 5;
+    margin: 26px auto;
+    border-radius: 26px;
+    padding: 9px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--gold);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+  }
+  .cover-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--gold-soft);
+    letter-spacing: 0.08em;
+  }
+
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 20px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 32px 22px;
+    text-align: center;
+    box-shadow: 0 18px 40px -16px rgba(11, 36, 27, 0.14);
+    margin-bottom: 24px;
+  }
+
+  .eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .card h2 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    font-style: italic;
+    color: var(--emerald-900);
+    margin-bottom: 14px;
+  }
+
+  .cd-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 420px;
+    margin: 16px auto 0;
+  }
+  .cd-item {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 6px;
+  }
+  .cd-item b {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--emerald-900);
+  }
+  .cd-item span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+  }
+
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--emerald-900);
+    color: var(--gold-soft);
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    padding: 13px 24px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    margin: 6px;
+  }
+  .btn-gold:hover { background: var(--emerald-950); transform: translateY(-2px); }
+  .btn-gold.solid { background: var(--gold); color: var(--emerald-950); }
+
+  .rsvp-input {
+    width: 100%;
+    max-width: 360px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    font-family: inherit;
+    font-size: 0.95rem;
+    margin: 10px auto 14px;
+    display: block;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    background: rgba(11, 36, 27, 0.72);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: var(--white);
+    border: 1px solid var(--gold);
+    border-radius: 24px;
+    max-width: 420px;
+    width: 100%;
+    padding: 26px;
+    text-align: center;
+  }
+  .sim-msg {
+    background: #E9F7EF;
+    border: 1px solid #A9DFBF;
+    border-radius: 14px;
+    padding: 14px;
+    text-align: left;
+    font-size: 0.88rem;
+    color: #1E4620;
+    margin: 14px 0 18px;
+    white-space: pre-line;
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 20px 48px;
+    color: var(--sage);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">Demo · Plan Esencial</div>
+
+<header class="hero">
+  <span class="badge-40">✦ ¡Celebramos juntos! ✦</span>
+  <h1>Mi Cumpleaños 40</h1>
+  <div class="hero-name">Laura Gómez</div>
+
+  <div class="cover-frame">
+    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=85" alt="Celebración Cumpleaños 40 de Laura">
+  </div>
+
+  <div class="hero-sub">Viernes 5 de Febrero · 2027 &nbsp;|&nbsp; 21:00 hs</div>
+</header>
+
+<section>
+  <div class="card">
+    <div class="eyebrow">Falta muy poco</div>
+    <h2>Cuenta regresiva</h2>
+    <div class="cd-grid">
+      <div class="cd-item"><b id="d">77</b><span>Días</span></div>
+      <div class="cd-item"><b id="h">18</b><span>Horas</span></div>
+      <div class="cd-item"><b id="m">40</b><span>Min</span></div>
+      <div class="cd-item"><b id="s">15</b><span>Seg</span></div>
+    </div>
+    <div style="margin-top:20px;">
+      <button class="btn-gold" id="icsBtn" type="button">Agendar en mi calendario</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">¿Dónde festejamos?</div>
+    <h2>Quincho Los Aromos</h2>
+    <p style="color:#4B6358;margin-bottom:18px;">
+      Viernes 5 de Febrero de 2027 · 21:00 hs<br>
+      Resistencia, Chaco
+    </p>
+    <a class="btn-gold" href="https://www.google.com/maps/search/?api=1&query=Quincho+Los+Aromos+Resistencia+Chaco" target="_blank" rel="noopener">
+      Cómo llegar · Google Maps
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">Confirmá tu lugar</div>
+    <h2>Asistencia por WhatsApp</h2>
+    <p style="color:#4B6358;font-size:0.95rem;">
+      ¡No podés faltar a brindar conmigo! Escribí tu nombre y confirmá tu asistencia:
+    </p>
+    <input type="text" id="guestInput" class="rsvp-input" placeholder="Tu nombre y apellido">
+    <button class="btn-gold solid" id="waSimBtn" type="button">
+      Confirmar por WhatsApp
+    </button>
+  </div>
+</section>
+
+<footer>
+  Laura Gómez · Mis 40 · 5 de Febrero de 2027<br>
+  Invitación web por <strong>Milena Gauto Studio</strong>
+</footer>
+
+<div class="modal-backdrop" id="modal">
+  <div class="modal-box" id="modalContent"></div>
+</div>
+
+<script>
+  const target = new Date("2027-02-05T21:00:00-03:00").getTime();
+  function tick() {
+    const diff = Math.max(0, target - Date.now());
+    document.getElementById("d").textContent = Math.floor(diff / 86400000);
+    document.getElementById("h").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+    document.getElementById("m").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+    document.getElementById("s").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Descargar archivo .ics real
+  document.getElementById("icsBtn").addEventListener("click", () => {
+    const ics = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      "SUMMARY:Mi Cumpleaños 40 - Laura Gómez",
+      "DTSTART:20270206T000000Z",
+      "DTEND:20270206T050000Z",
+      "LOCATION:Quincho Los Aromos, Resistencia, Chaco",
+      "DESCRIPTION:Festejo de los 40 años de Laura Gómez.",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "cumple-40-laura.ics";
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Simulador seguro de WhatsApp
+  const modal = document.getElementById("modal");
+  const modalContent = document.getElementById("modalContent");
+  modal.addEventListener("click", (e) => { if (e.target === modal) modal.classList.remove("open"); });
+
+  document.getElementById("waSimBtn").addEventListener("click", () => {
+    const guest = document.getElementById("guestInput").value.trim() || "Invitado/a";
+    modalContent.innerHTML = `
+      <div class="eyebrow">Vista previa de demostración</div>
+      <h3 class="serif" style="font-size:1.8rem;color:var(--emerald-900);">Mensaje listo para WhatsApp</h3>
+      <p style="font-size:0.86rem;color:#4B6358;margin-top:6px;">
+        En una invitación real, este botón abre el chat de WhatsApp de la cumpleañera con el mensaje ya escrito:
+      </p>
+      <div class="sim-msg">¡Hola Laura! 🎉 Confirmo mi asistencia a tu Cumpleaños 40 en Quincho Los Aromos el viernes 5 de febrero.
+Soy: ${guest}</div>
+      <button class="btn-gold solid" onclick="document.getElementById('modal').classList.remove('open')">Cerrar vista previa</button>
+    `;
+    modal.classList.add("open");
+  });
+</script>
+</body>
+</html>
