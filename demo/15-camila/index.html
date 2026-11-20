@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mis 15 · Camila Duarte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bordo-950: #240912;
+    --bordo-900: #3E101E;
+    --bordo-800: #5B192D;
+    --bordo-700: #78233C;
+    --gold: #D4AF37;
+    --gold-light: #F0D98C;
+    --cream: #FAF5F0;
+    --white: #FFFFFF;
+    --border: rgba(212, 175, 55, 0.35);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    background: var(--bordo-950);
+    color: var(--cream);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+
+  /* PIN Gate */
+  .pin-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background:
+      radial-gradient(circle at center, rgba(120, 35, 60, 0.55), rgba(36, 9, 18, 0.98)),
+      var(--bordo-950);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 0.45s ease, visibility 0.45s ease;
+  }
+  .pin-gate.unlocked {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .pin-card {
+    background: rgba(62, 16, 30, 0.9);
+    border: 1px solid var(--gold);
+    border-radius: 28px;
+    padding: 36px 24px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+  }
+  .pin-input {
+    width: 160px;
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 0.35em;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--gold);
+    background: var(--bordo-950);
+    color: var(--gold-light);
+    margin: 16px auto 10px;
+    display: block;
+  }
+  .pin-hint {
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+
+  .demo-ribbon {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 90;
+    background: rgba(36, 9, 18, 0.9);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  .music-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 90;
+    background: rgba(36, 9, 18, 0.9);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    cursor: pointer;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 94vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 76px 20px 56px;
+    background:
+      linear-gradient(180deg, rgba(36,9,18,0.62) 0%, rgba(36,9,18,0.88) 75%, var(--bordo-950) 100%),
+      url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 9vw, 5rem);
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.7rem);
+    color: var(--white);
+    margin-top: 6px;
+  }
+  .hero-portrait {
+    width: min(270px, 74vw);
+    aspect-ratio: 3 / 4;
+    margin: 24px auto;
+    border-radius: 140px 140px 20px 20px;
+    padding: 8px;
+    border: 1px solid var(--gold);
+    background: rgba(212, 175, 55, 0.12);
+  }
+  .hero-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 132px 132px 14px 14px;
+    display: block;
+  }
+
+  section {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 58px 20px;
+  }
+
+  .lux-card {
+    background: linear-gradient(160deg, rgba(91, 25, 45, 0.45), rgba(36, 9, 18, 0.85));
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 32px 22px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .lux-card h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+  }
+
+  /* Countdown */
+  .cd-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 420px;
+    margin: 18px auto 0;
+  }
+  .cd-box {
+    background: rgba(36, 9, 18, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 6px;
+  }
+  .cd-box b {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .cd-box span {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #D8C3C8;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+  @media (max-width: 620px) { .timeline { grid-template-columns: 1fr; } }
+  .tl-item {
+    background: rgba(36, 9, 18, 0.7);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+  }
+  .tl-item b {
+    display: block;
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Gallery 12 photos */
+  .gal-12 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 18px;
+  }
+  @media (max-width: 600px) { .gal-12 { grid-template-columns: repeat(3, 1fr); } }
+  .gal-12 img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  /* Buttons & Inputs */
+  .btn-lux {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold), #B68F25);
+    color: var(--bordo-950);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 6px;
+  }
+  .btn-lux.outline {
+    background: transparent;
+    color: var(--gold-light);
+    border: 1px solid var(--gold);
+  }
+
+  .lux-input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(36, 9, 18, 0.85);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+  }
+
+  .alias-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(36, 9, 18, 0.9);
+    border: 1px dashed var(--gold);
+    padding: 10px 18px;
+    border-radius: 14px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+  }
+
+  /* Photo Wall & Live Panel */
+  .wall-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 16px 0;
+  }
+  .wall-mini img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .qr-pill {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--bordo-950);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(18, 4, 9, 0.82);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal-box {
+    background: var(--bordo-900);
+    border: 1px solid var(--gold);
+    border-radius: 24px;
+    max-width: 430px;
+    width: 100%;
+    padding: 26px;
+    text-align: center;
+    color: var(--cream);
+  }
+  .sim-preview {
+    background: rgba(36, 9, 18, 0.95);
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: left;
+    font-size: 0.86rem;
+    color: var(--gold-light);
+    margin: 14px 0 18px;
+    white-space: pre-line;
+  }
+
+  footer {
+    text-align: center;
+    padding: 36px 20px 54px;
+    color: #C7AEB5;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<!-- PIN GATE -->
+<div class="pin-gate" id="pinGate">
+  <div class="pin-card">
+    <div class="eyebrow">Invitación Privada</div>
+    <h2 class="serif" style="font-size:2.2rem;color:var(--gold-light);font-style:italic;">Mis 15 · Camila</h2>
+    <p style="font-size:0.88rem;color:#E5D2D7;margin-top:6px;">Ingresá el código de acceso para entrar</p>
+    <input type="text" id="pinInput" class="pin-input" maxlength="4" value="2027" aria-label="Código PIN">
+    <div class="pin-hint">Clave de demostración: <strong>2027</strong></div>
+    <button class="btn-lux" id="unlockBtn" type="button" style="width:100%;">Ingresar a la invitación</button>
+  </div>
+</div>
+
+<div class="demo-ribbon">Demo · Plan Premium</div>
+<button class="music-btn" id="waltzBtn" type="button">♪ Vals de Camila</button>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">Una noche mágica e inolvidable</div>
+  <h1>Mis 15</h1>
+  <div class="hero-name">Camila Duarte</div>
+
+  <div class="hero-portrait">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85" alt="Camila Duarte">
+  </div>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--gold-light);max-width:440px;">
+    “Los sueños se vuelven realidad cuando se comparten con quienes más queremos.”
+  </p>
+  <div style="margin-top:12px;font-size:0.95rem;letter-spacing:0.12em;color:var(--white);">
+    SÁBADO 10 DE ABRIL · 2027 &nbsp;|&nbsp; 21:30 HS
+  </div>
+</header>
+
+<section>
+  <!-- COUNTDOWN -->
+  <div class="lux-card">
+    <div class="eyebrow">Cuenta regresiva</div>
+    <h2>Falta muy poco</h2>
+    <div class="cd-grid">
+      <div class="cd-box"><b id="d">141</b><span>Días</span></div>
+      <div class="cd-box"><b id="h">19</b><span>Horas</span></div>
+      <div class="cd-box"><b id="m">25</b><span>Min</span></div>
+      <div class="cd-box"><b id="s">40</b><span>Seg</span></div>
+    </div>
+  </div>
+
+  <!-- HISTORIA -->
+  <div class="lux-card">
+    <div class="eyebrow">Un recorrido por mi vida</div>
+    <h2>Mi historia</h2>
+    <p style="color:#E7D4D9;font-size:0.95rem;max-width:54ch;margin:0 auto;">
+      Desde pequeña siempre soñé con esta noche rodeada de mi familia y mis amigos de toda la vida. Gracias mamá Romina y a cada persona que fue parte de cada paso hasta llegar a mis 15 años.
+    </p>
+  </div>
+
+  <!-- CRONOGRAMA & LUGAR -->
+  <div class="lux-card">
+    <div class="eyebrow">Salón Luna Eventos · Resistencia</div>
+    <h2>Cronograma de la noche</h2>
+    <div class="timeline">
+      <div class="tl-item"><b>21:30 hs</b><span>Recepción &amp; bienvenida</span></div>
+      <div class="tl-item"><b>23:00 hs</b><span>Entrada &amp; Vals</span></div>
+      <div class="tl-item"><b>00:00 hs</b><span>Cena &amp; Fiesta</span></div>
+    </div>
+    <div style="margin-top:20px;">
+      <a class="btn-lux outline" href="https://www.google.com/maps/search/?api=1&query=Salon+Luna+Eventos+Resistencia+Chaco" target="_blank" rel="noopener">
+        Ver Salón Luna Eventos en Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- DRESS CODE & REGALOS -->
+  <div class="lux-card">
+    <div class="eyebrow">Detalles importantes</div>
+    <h2>Dress Code &amp; Regalos</h2>
+    <p style="color:var(--gold-light);font-weight:600;margin-bottom:8px;">✦ Etiqueta de Gala (Evitar color bordó)</p>
+    <p style="color:#E7D4D9;font-size:0.92rem;max-width:50ch;margin:0 auto 12px;">
+      Tu presencia es mi mejor regalo, pero si deseás hacerme un presente podés hacerlo a través de mi alias bancario:
+    </p>
+    <div class="alias-box">
+      <span id="aliasText">camila.duarte.15mp</span>
+      <button class="btn-lux" id="copyAliasBtn" type="button" style="padding:6px 14px;font-size:0.78rem;margin:0;">Copiar</button>
+    </div>
+  </div>
+
+  <!-- GALERÍA 12 FOTOS -->
+  <div class="lux-card">
+    <div class="eyebrow">Sesión previa</div>
+    <h2>Galería de Camila (12 fotos)</h2>
+    <div class="gal-12">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=400&q=75" alt="Foto 1">
+      <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=400&q=75" alt="Foto 2">
+      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=400&q=75" alt="Foto 3">
+      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=75" alt="Foto 4">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=400&q=75" alt="Foto 5">
+      <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=400&q=75" alt="Foto 6">
+      <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=400&q=75" alt="Foto 7">
+      <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=400&q=75" alt="Foto 8">
+      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=400&q=75" alt="Foto 9">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=400&q=75" alt="Foto 10">
+      <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=400&q=75" alt="Foto 11">
+      <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=400&q=75" alt="Foto 12">
+    </div>
+  </div>
+
+  <!-- MURO DE FOTOS EN VIVO + QR POR MESA -->
+  <div class="lux-card">
+    <div class="eyebrow">Adicional incluido en demo</div>
+    <h2>Muro de Fotos &amp; QR por Mesa</h2>
+    <p style="color:#E7D4D9;font-size:0.92rem;">
+      Cada una de las <strong>20 mesas</strong> cuenta con su tarjeta QR individual para subir fotos en tiempo real a la pantalla del salón.
+    </p>
+    <div class="wall-mini">
+      <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=400&q=75" alt="Muro 1">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=400&q=75" alt="Muro 2">
+      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=400&q=75" alt="Muro 3">
+    </div>
+    <div class="qr-pill">▦ QR Mesa #01 a #20 · Álbum Colaborativo Activo</div>
+  </div>
+
+  <!-- FORMULARIO + PANEL EN TIEMPO REAL -->
+  <div class="lux-card">
+    <div class="eyebrow">Confirmación Premium</div>
+    <h2>Confirmá tu asistencia</h2>
+    <form id="rsvp15Form" style="text-align:left;max-width:440px;margin:16px auto 0;">
+      <input class="lux-input" type="text" id="rName" placeholder="Nombre y apellido *" required>
+      <select class="lux-input" id="rMenu">
+        <option value="Menú clásico">Menú clásico</option>
+        <option value="Menú sin TACC">Menú sin TACC</option>
+        <option value="Menú vegetariano / vegano">Menú vegetariano / vegano</option>
+      </select>
+      <input class="lux-input" type="text" id="rSong" placeholder="¿Qué canción no puede faltar en la fiesta?">
+      <button class="btn-lux" type="submit" style="width:100%;">Confirmar y ver resumen</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  Camila Duarte · Mis 15 · 10 de Abril de 2027<br>
+  Experiencia Premium por <strong>Milena Gauto Studio</strong>
+</footer>
+
+<div class="modal-backdrop" id="modal15">
+  <div class="modal-box" id="modal15Body"></div>
+</div>
+
+<script>
+  // PIN Gate (pre-cargado con 2027 para probar rápido)
+  const gate = document.getElementById("pinGate");
+  const pinInput = document.getElementById("pinInput");
+  document.getElementById("unlockBtn").addEventListener("click", () => {
+    if (pinInput.value.trim() === "2027") {
+      gate.classList.add("unlocked");
+    } else {
+      pinInput.style.borderColor = "#ff6b6b";
+    }
+  });
+
+  // Countdown
+  const target15 = new Date("2027-04-10T21:30:00-03:00").getTime();
+  function tick15() {
+    const diff = Math.max(0, target15 - Date.now());
+    document.getElementById("d").textContent = Math.floor(diff / 86400000);
+    document.getElementById("h").textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, "0");
+    document.getElementById("m").textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, "0");
+    document.getElementById("s").textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+  }
+  tick15();
+  setInterval(tick15, 1000);
+
+  // Vals suave por Web Audio API
+  let ctx = null, playing = false, timer = null, idx = 0;
+  const waltz = [440, 523.25, 659.25, 523.25, 493.88, 587.33, 783.99, 587.33];
+  const waltzBtn = document.getElementById("waltzBtn");
+  waltzBtn.addEventListener("click", () => {
+    if (!playing) {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === "suspended") ctx.resume();
+      playing = true;
+      waltzBtn.textContent = "❚❚ Pausar Vals";
+      timer = setInterval(() => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "triangle";
+        o.frequency.value = waltz[idx++ % waltz.length];
+        g.gain.setValueAtTime(0.001, ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.045, ctx.currentTime + 0.1);
+        g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.8);
+        o.connect(g); g.connect(ctx.destination);
+        o.start(); o.stop(ctx.currentTime + 0.85);
+      }, 650);
+    } else {
+      playing = false;
+      waltzBtn.textContent = "♪ Vals de Camila";
+      clearInterval(timer);
+    }
+  });
+
+  // Copiar alias
+  document.getElementById("copyAliasBtn").addEventListener("click", function() {
+    navigator.clipboard?.writeText("camila.duarte.15mp");
+    this.textContent = "¡Copiado!";
+    setTimeout(() => this.textContent = "Copiar", 1800);
+  });
+
+  // Confirmación simulada
+  const modal15 = document.getElementById("modal15");
+  const modal15Body = document.getElementById("modal15Body");
+  modal15.addEventListener("click", (e) => { if (e.target === modal15) modal15.classList.remove("open"); });
+
+  document.getElementById("rsvp15Form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const n = document.getElementById("rName").value.trim();
+    const m = document.getElementById("rMenu").value;
+    const s = document.getElementById("rSong").value.trim() || "Sorpresa";
+    modal15Body.innerHTML = `
+      <div class="eyebrow">Panel en tiempo real + WhatsApp</div>
+      <h3 class="serif" style="font-size:1.9rem;color:var(--gold-light);font-style:italic;">¡Confirmación registrada!</h3>
+      <p style="font-size:0.86rem;color:#E7D4D9;margin-top:6px;">
+        Vista previa de demostración (no envía datos a ningún número externo):
+      </p>
+      <div class="sim-preview">✨ Confirmación Mis 15 de Camila
+• Invitado/a: ${n}
+• Menú: ${m}
+• Canción sugerida: ${s}</div>
+      <button class="btn-lux" onclick="document.getElementById('modal15').classList.remove('open')">Cerrar</button>
+    `;
+    modal15.classList.add("open");
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
