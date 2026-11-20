@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Milena Gauto Studio · Invitaciones digitales">
-<meta property="og:description" content="Invitaciones web a medida para 15 años, casamientos y bautismos.">
+<meta property="og:description" content="Invitaciones web a medida para cumpleaños, bautismos y 15 años.">
 <meta property="og:image" content="https://milenagautostudio.vercel.app/post_bienvenida_preview.png">
 <meta property="og:url" content="https://milenagautostudio.vercel.app">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>Milena Gauto Studio · Invitaciones digitales</title>
-<meta name="description" content="Invitaciones web personalizadas para bautismos, 15 años y casamientos. Diseños interactivos con cuenta regresiva, mapas, confirmación por WhatsApp y muro de fotos en vivo.">
+<meta name="description" content="Invitaciones web personalizadas para cumpleaños, bautismos y 15 años. Diseños interactivos con cuenta regresiva, mapas, confirmación por WhatsApp y muro de fotos en vivo.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -31,30 +31,39 @@
   --muted: #8a6a5e;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  width: 100%;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font: 400 17px/1.6 Jost, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, iframe, svg {
+  max-width: 100%;
 }
 
 h1, h2, h3 {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.08;
   margin: 0;
 }
 
 h1 {
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-size: clamp(2.5rem, 6.5vw, 4.5rem);
   font-style: italic;
   color: var(--wine);
 }
@@ -92,6 +101,7 @@ a {
 }
 
 .wrap {
+  width: 100%;
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 22px;
@@ -109,11 +119,12 @@ section {
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand small {
-  font: 400 .72rem Jost, sans-serif;
-  letter-spacing: .22em;
+  font: 400 .7rem Jost, sans-serif;
+  letter-spacing: .2em;
   color: var(--gold2);
   text-transform: uppercase;
   display: block;
@@ -142,21 +153,25 @@ header.top {
   justify-content: space-between;
   align-items: center;
   padding: 18px 0;
+  gap: 16px;
 }
 
 /* BOTONES */
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: var(--wine);
   color: #fffaf4;
-  border: 0;
+  border: 1px solid var(--wine);
   border-radius: 999px;
   padding: 13px 26px;
-  font: 500 1rem Jost, sans-serif;
+  font: 500 .98rem Jost, sans-serif;
   text-decoration: none;
   cursor: pointer;
-  transition: transform .25s, background .25s;
+  transition: transform .25s, filter .25s, background .25s;
 }
 
 .btn.alt {
@@ -166,7 +181,7 @@ header.top {
 }
 
 .btn:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.06);
   transform: translateY(-2px);
 }
 
@@ -180,10 +195,10 @@ header.top {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   gap: 40px;
   align-items: center;
-  padding: 36px 0 72px;
+  padding: 32px 0 72px;
 }
 
 .hero p {
@@ -191,25 +206,77 @@ header.top {
   color: var(--muted);
 }
 
-/* CELULAR */
+/* MOCKUP DE CELULAR ESTABLE Y PRO */
+
+.phone-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
 .phone {
-  width: 290px;
-  height: 580px;
+  width: 300px;
+  max-width: 100%;
+  height: 600px;
   margin: 0 auto;
-  border: 10px solid #5a2a3c;
-  border-radius: 42px;
+  border: 11px solid #3c1b27;
+  border-radius: 44px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 0 2px var(--gold);
+  background: #141112;
+  box-shadow:
+    0 0 0 2px var(--gold),
+    0 24px 54px rgba(90, 42, 60, .18);
   position: relative;
+  isolation: isolate;
+  contain: layout paint;
+  transform: translateZ(0);
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 20px;
+  border-radius: 999px;
+  background: #231017;
+  z-index: 6;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.phone-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #fff;
 }
 
 .phone iframe {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+  height: 780px;
   border: 0;
   background: #fff;
+  transform: scale(0.7128);
+  transform-origin: top left;
+  display: block;
+}
+
+.phone-hint {
+  margin-top: 12px;
+  font-size: .8rem;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: .04em;
 }
 
 .phone .empty {
@@ -227,9 +294,9 @@ header.top {
 
 .tabs {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin: 22px 0;
+  margin: 24px 0 30px;
 }
 
 .tabs button {
@@ -237,7 +304,7 @@ header.top {
   background: var(--card);
   color: var(--ink);
   border-radius: 999px;
-  padding: 9px 18px;
+  padding: 10px 20px;
   font: 500 .95rem Jost, sans-serif;
   cursor: pointer;
   transition: .25s;
@@ -251,23 +318,71 @@ header.top {
   background: var(--wine);
   border-color: var(--wine);
   color: #fff;
+  box-shadow: 0 8px 20px rgba(125, 58, 82, .2);
 }
 
 .demo {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 44px;
   align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 36px;
+  box-shadow: 0 18px 46px rgba(90, 42, 60, .06);
+}
+
+.demo-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: #fbf6f1;
+  color: var(--wine);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
 
 .meta h3 {
-  font-size: 2rem;
+  font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+  font-style: italic;
   color: var(--wine);
 }
 
-.meta ul {
-  padding-left: 1.1rem;
+.meta-sub {
+  color: var(--gold2);
+  font-weight: 500;
+  margin: 4px 0 14px;
+  font-size: .95rem;
+}
+
+.meta p {
   color: var(--muted);
+}
+
+.meta ul {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 24px;
+  color: var(--ink);
+}
+
+.meta li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: .96rem;
+}
+
+.meta li::before {
+  content: "✦";
+  color: var(--gold);
+  flex-shrink: 0;
 }
 
 /* MURO DE FOTOS */
@@ -279,7 +394,7 @@ header.top {
 
 .wall-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 42px;
   align-items: center;
 }
@@ -386,7 +501,7 @@ header.top {
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
   counter-reset: s;
   padding: 0;
@@ -420,7 +535,7 @@ header.top {
 
 .plans {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   margin-top: 28px;
   align-items: stretch;
@@ -486,12 +601,6 @@ header.top {
 
 .plans-extra b {
   color: var(--wine);
-}
-
-@media(max-width:800px) {
-  .plans {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* TESTIMONIOS */
@@ -599,10 +708,14 @@ footer {
 
 /* RESPONSIVE */
 
-@media(max-width:800px) {
+@media(max-width:860px) {
   .hero,
   .demo,
   .wall-content {
+    grid-template-columns: 1fr;
+  }
+
+  .plans {
     grid-template-columns: 1fr;
   }
 
@@ -610,8 +723,13 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .phone {
+  .phone-stage {
     order: -1;
+  }
+
+  .demo {
+    padding: 24px 20px;
+    gap: 28px;
   }
 
   .wall-preview {
@@ -631,17 +749,29 @@ footer {
   }
 
   .phone {
-    width: min(290px, 100%);
-    height: 540px;
+    width: 280px;
+    height: 560px;
+    border-width: 10px;
+    border-radius: 40px;
+  }
+
+  .phone-viewport {
+    border-radius: 30px;
+  }
+
+  .phone iframe {
+    width: 390px;
+    height: 780px;
+    transform: scale(0.6667);
   }
 
   header.top {
-    gap: 12px;
+    gap: 10px;
   }
 
   header.top .btn {
-    padding: 10px 15px;
-    font-size: .85rem;
+    padding: 9px 14px;
+    font-size: .82rem;
   }
 
   .wall-gallery {
@@ -658,7 +788,7 @@ footer {
 }
 
 @media(prefers-reduced-motion:reduce) {
-  * {
+  *, *::before, *::after {
     animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
@@ -704,7 +834,10 @@ footer {
       </div>
     </div>
 
-    <div class="phone" id="heroPhone"></div>
+    <div class="phone-stage">
+      <div class="phone" id="heroPhone"></div>
+      <span class="phone-hint">Vista previa interactiva · Deslizá dentro del teléfono</span>
+    </div>
 
   </div>
 
@@ -719,7 +852,7 @@ footer {
     <h2>Probá una invitación real</h2>
 
     <p>
-      Elegí un estilo y navegá la invitación dentro del celular,
+      Elegí un plan y navegá la invitación dentro del celular,
       igual que la ve tu invitado.
     </p>
 
@@ -729,7 +862,10 @@ footer {
 
       <div class="meta" id="meta"></div>
 
-      <div class="phone" id="demoPhone"></div>
+      <div class="phone-stage">
+        <div class="phone" id="demoPhone"></div>
+        <span class="phone-hint">Deslizá para recorrer la invitación</span>
+      </div>
 
     </div>
 
@@ -776,7 +912,7 @@ footer {
 
       </div>
 
-      <!-- GALERÍA ILUSTRATIVA CON IMÁGENES DE TUS DEMOS -->
+      <!-- GALERÍA ILUSTRATIVA -->
 
       <div class="wall-preview">
 
@@ -789,32 +925,32 @@ footer {
 
           <div class="wall-photo">
             <img
-              src="/demo/bautismo/img/pexels-karola-g2-5559.jpg"
-              alt="Decoración de bautismo"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+              alt="Celebración y brindis"
               loading="lazy"
             >
           </div>
 
           <div class="wall-photo">
             <img
-              src="/demo/15-anios/img/pexels-flavionascimento-39394234.jpg"
-              alt="Celebración de 15 años"
+              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80"
+              alt="Fiesta de 15 años"
               loading="lazy"
             >
           </div>
 
           <div class="wall-photo">
             <img
-              src="/demo/casamiento/img/pexels-amar-12954015.jpg"
-              alt="Celebración de casamiento"
+              src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80"
+              alt="Detalles del evento"
               loading="lazy"
             >
           </div>
 
           <div class="wall-photo">
             <img
-              src="/demo/casamiento/img/pexels-franco-monsalvo-252430633-30740005.jpg"
-              alt="Momento especial de una boda"
+              src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80"
+              alt="Recuerdos compartidos"
               loading="lazy"
             >
           </div>
@@ -855,6 +991,7 @@ footer {
           <li>Invitación web personalizada</li>
           <li>Cuenta regresiva</li>
           <li>Ubicación y confirmación por WhatsApp</li>
+          <li>Botón para agendar en el calendario</li>
           <li>Diseño adaptable a celulares</li>
         </ul>
         <a class="btn alt" href="#demos" data-demo="0">Ver demo</a>
@@ -866,9 +1003,9 @@ footer {
         <ul>
           <li>Todo lo del plan Esencial</li>
           <li>Animaciones y transiciones</li>
-          <li>Carrusel de fotografías</li>
-          <li>Música y galería</li>
-          <li>Secciones personalizadas</li>
+          <li>Carrusel y galería de fotografías</li>
+          <li>Música de fondo</li>
+          <li>Doble ubicación y secciones personalizadas</li>
         </ul>
         <a class="btn alt" href="#demos" data-demo="1">Ver demo</a>
       </div>
@@ -878,8 +1015,8 @@ footer {
         <div class="price">$115.000</div>
         <ul>
           <li>Diseño exclusivo desde cero</li>
-          <li>Animaciones avanzadas</li>
-          <li>Formulario de asistencia</li>
+          <li>Acceso con código PIN</li>
+          <li>Formulario + panel de confirmados</li>
           <li>Cronograma, regalos y dress code</li>
           <li>Experiencia web personalizada</li>
         </ul>
@@ -889,7 +1026,7 @@ footer {
     </div>
 
     <div class="plans-extra">
-      <b>Proyectos exclusivos:</b> muro de fotos en vivo y funcionalidades especiales.
+      <b>Proyectos exclusivos:</b> muro de fotos en vivo, QR por mesa y funcionalidades especiales.
       Consultá por presupuesto.
     </div>
 
@@ -990,7 +1127,7 @@ footer {
 
     <br>
 
-    15 años · Bautismos · Casamientos · @milenagauto.studio
+    Cumpleaños · Bautismos · 15 años · Casamientos · @milenagauto.studio
 
   </div>
 
@@ -999,46 +1136,53 @@ footer {
 <script>
 
 /* ==========================================
-   CONFIGURACIÓN DE LAS INVITACIONES
+   CONFIGURACIÓN DE LAS 3 INVITACIONES DEMO
 ========================================== */
 
 const DEMOS = [
 
   {
-    name: "Esencial · Bautismo",
+    badge: "Plan Esencial · $55.000",
+    name: "Cumpleaños 40 · Laura",
+    subtitle: "Estilo moderno y festivo · Verde esmeralda y dorado",
+    url: "/demo/cumpleanos/",
+    text: "Una invitación clara, elegante y directa al grano para compartir por WhatsApp y organizar tu festejo sin vueltas.",
+    items: [
+      "Foto protagonista de portada",
+      "Cuenta regresiva en tiempo real",
+      "Ubicación con mapa interactivo (Quincho Los Aromos)",
+      "Botón para agendar en el calendario (.ics)",
+      "Confirmación de asistencia por WhatsApp"
+    ]
+  },
+
+  {
+    badge: "Plan Interactiva · $79.000",
+    name: "Bautismo · Olivia",
+    subtitle: "Estilo delicado y romántico · Celeste pastel y blanco",
     url: "/demo/bautismo/",
-    text: "Plan Esencial ($55.000): una invitación clara, prolija y lista para compartir.",
+    text: "Suma música ambiental, galería de fotos, doble ubicación (Parroquia y Salón) y secciones emotivas para emocionar desde el primer clic.",
     items: [
-      "Invitación web personalizada",
-      "Cuenta regresiva",
-      "Ubicación y confirmación por WhatsApp",
-      "Diseño adaptable a celulares"
+      "Música de fondo con reproductor integrado",
+      "Doble ubicación: Ceremonia y Festejo con mapas",
+      "Galería interactiva de 6 fotografías",
+      "Mensaje especial de los padres",
+      "Confirmación de asistencia con restricciones alimentarias"
     ]
   },
 
   {
-    name: "Interactiva · 15 años",
+    badge: "Plan Premium Experience · $115.000",
+    name: "Mis 15 · Camila",
+    subtitle: "Estilo luxury exclusivo · Bordó profundo y dorado metálico",
     url: "/demo/15-anios/",
-    text: "Plan Interactiva ($79.000): suma movimiento, fotos y música para sorprender.",
+    text: "La experiencia completa: acceso privado con código PIN (probá con 2027), vals, cronograma, mesa de regalos, muro de fotos y panel en vivo.",
     items: [
-      "Todo lo del plan Esencial",
-      "Animaciones y transiciones",
-      "Carrusel de fotografías",
-      "Música y galería",
-      "Secciones personalizadas"
-    ]
-  },
-
-  {
-    name: "Premium · Casamiento",
-    url: "/demo/casamiento/",
-    text: "Plan Premium Experience ($115.000): una experiencia web exclusiva, diseñada desde cero.",
-    items: [
-      "Diseño exclusivo desde cero",
-      "Animaciones avanzadas",
-      "Formulario de asistencia",
-      "Cronograma, regalos y dress code",
-      "Experiencia web personalizada"
+      "Código de acceso privado con PIN (clave demo: 2027)",
+      "Historia de infancia, cronograma y dress code de gala",
+      "Galería de 12 fotos y mesa de regalos con alias copiable",
+      "Formulario completo + panel de confirmados en tiempo real",
+      "Muro de fotos colaborativo + tarjetas QR por mesa"
     ]
   }
 
@@ -1047,8 +1191,6 @@ const DEMOS = [
 
 /* ==========================================
    TESTIMONIOS
-   Para sumar uno, agregá otro bloque { ... }
-   separado por coma. Con 2 o más, rotan solos.
 ========================================== */
 
 const TESTIMONIOS = [
@@ -1063,46 +1205,35 @@ const TESTIMONIOS = [
 
 
 /* ==========================================
-   ELEMENTOS
+   ELEMENTOS Y RENDERIZADO
 ========================================== */
 
 const $ = selector => document.querySelector(selector);
-
-
-/* ==========================================
-   CARGAR INVITACIÓN EN EL CELULAR
-========================================== */
 
 function phone(element, demo) {
 
   element.innerHTML = "";
 
   if (!demo || !demo.url) {
-
     const empty = document.createElement("div");
-
     empty.className = "empty";
     empty.textContent = "Demo próximamente disponible.";
-
     element.appendChild(empty);
-
     return;
   }
 
-  const iframe = document.createElement("iframe");
+  const viewport = document.createElement("div");
+  viewport.className = "phone-viewport";
 
+  const iframe = document.createElement("iframe");
   iframe.loading = "lazy";
   iframe.src = demo.url;
   iframe.title = "Demo de invitación: " + demo.name;
 
-  element.appendChild(iframe);
+  viewport.appendChild(iframe);
+  element.appendChild(viewport);
 
 }
-
-
-/* ==========================================
-   MOSTRAR DEMO SELECCIONADA
-========================================== */
 
 function showDemo(index) {
 
@@ -1111,16 +1242,16 @@ function showDemo(index) {
   document
     .querySelectorAll("#tabs button")
     .forEach((button, number) => {
-
       button.setAttribute(
         "aria-pressed",
         number === index ? "true" : "false"
       );
-
     });
 
   $("#meta").innerHTML = `
+    <span class="demo-badge">${demo.badge}</span>
     <h3>${demo.name}</h3>
+    <div class="meta-sub">${demo.subtitle}</div>
 
     <p>${demo.text}</p>
 
@@ -1128,56 +1259,43 @@ function showDemo(index) {
       ${demo.items.map(item => `<li>${item}</li>`).join("")}
     </ul>
 
-    <a
-      class="btn alt"
-      href="${demo.url}"
-      target="_blank"
-      rel="noopener"
-    >
-      Abrir en pantalla completa
-    </a>
+    <div class="row">
+      <a
+        class="btn"
+        href="${demo.url}"
+        target="_blank"
+        rel="noopener"
+      >
+        Abrir en pantalla completa
+      </a>
+      <a class="btn alt" href="#contacto">
+        Quiero una así
+      </a>
+    </div>
   `;
 
   phone($("#demoPhone"), demo);
 
 }
 
-
-/* ==========================================
-   CREAR BOTONES DE LAS DEMOS
-========================================== */
-
 DEMOS.forEach((demo, index) => {
 
   const button = document.createElement("button");
-
   button.type = "button";
   button.textContent = demo.name;
-
   button.setAttribute(
     "aria-pressed",
-    index === 0 ? "true" : "false"
+    index === 1 ? "true" : "false"
   );
-
   button.onclick = () => showDemo(index);
 
   $("#tabs").appendChild(button);
 
 });
 
-
-/* ==========================================
-   CARGAR DEMO INICIAL
-========================================== */
-
-phone($("#heroPhone"), DEMOS[0]);
-
-showDemo(0);
-
-
-/* ==========================================
-   BOTONES "VER DEMO" DE LOS PLANES
-========================================== */
+/* Portada muestra la Interactiva (la más elegida) */
+phone($("#heroPhone"), DEMOS[1]);
+showDemo(1);
 
 document.querySelectorAll("[data-demo]").forEach(link => {
   link.addEventListener("click", () => showDemo(Number(link.dataset.demo)));
@@ -1257,15 +1375,6 @@ document.querySelectorAll("[data-demo]").forEach(link => {
   start();
 
 })();
-
-
-/* ==========================================
-   FIN DEL SCRIPT
-
-   No se utiliza Cloudinary.
-   No hay formularios de carga de imágenes.
-   No hay conexión a almacenamiento externo.
-========================================== */
 
 </script>
 
